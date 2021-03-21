@@ -1,4 +1,90 @@
 <%- include('header'); -%>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <ul>
+      <% reports.forEach(function(report, i, arr){ -%>
+        <li style="display: inline-block">
+          <a href="<%= report.requestedUrl %>" title="<%= report.name %>">
+            <img width="140" src="<%= report.audits['final-screenshot'].details.data %>">
+          </a>
+        </li>
+      <% }); -%>
+    </ul>
+    <div id="container" style="height:600px"></div>
+    <script type="module">
+      import Highcharts from 'https://code.highcharts.com/es-modules/masters/highcharts.src.js';
+      import 'https://code.highcharts.com/es-modules/masters/highcharts-more.src.js';
+      import 'https://code.highcharts.com/es-modules/masters/modules/accessibility.src.js';
+      import 'https://code.highcharts.com/es-modules/masters/modules/exporting.src.js';
+      import 'https://code.highcharts.com/es-modules/masters/modules/export-data.src.js';
+
+      Highcharts.chart('container', {
+
+        chart: {
+          type: 'bubble',
+          plotBorderWidth: 1,
+          zoomType: 'xy'
+        },
+
+        legend: {
+          enabled: false
+        },
+
+        title: {
+          text: 'Government websites performance'
+        },
+
+        subtitle: {
+          text: 'Source: <a href="https://developers.google.com/web/tools/lighthouse">Google Lighthouse</a>'
+        },
+
+        accessibility: {
+          point: {
+            valueDescriptionFormat: '{index}. {point.name}, fat: {point.x}g, sugar: {point.y}g, obesity: {point.z}%.'
+          }
+        },
+
+        xAxis: {
+          title: {
+            text: 'Accessibility'
+          },
+        },
+
+        yAxis: {
+          title: {
+            text: 'Performance'
+          },
+          min: 0,
+          max: 100
+        },
+
+        tooltip: {
+          useHTML: true,
+          headerFormat: '<table>',
+          pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+            '<tr><th>Accessibility:</th><td>{point.x}</td></tr>' +
+            '<tr><th>Performance:</th><td>{point.y}</td></tr>',
+          footerFormat: '</table>',
+          followPointer: true
+        },
+
+        plotOptions: {
+          series: {
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}'
+            }
+          }
+        },
+
+        series: [{
+            data: [
+            <% reports.forEach(function(report, i, arr){ -%>
+              { x: <%= Math.round(report.categories.accessibility.score * 100) %>, y: <%= Math.round(report.categories.performance.score * 100) %>, name: '<%= report.tld.toUpperCase() %>', country: '<%= report.name %>' },
+            <% }); -%>
+            ]
+        }]
+
+      });
+    </script>
 <%- include('footer'); -%>
