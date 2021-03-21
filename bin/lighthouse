@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var fs = require("fs")
+var execSync = require('child_process').execSync;
+var countriesData = require('../data/countries.json');
+
+countriesData.countries.forEach((item, i) => {
+  var reportPath = `./data/${item.tld}.json`
+  if(!fs.existsSync(reportPath)) {
+    try {
+      execSync(`lighthouse ${item.url}  --output json > ${reportPath}`);
+    }
+    catch(err) {
+      console.log(`Lighthouse failed on ${item.url}`);
+      return;
+    }
+  }
+});
