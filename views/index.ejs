@@ -1,7 +1,6 @@
 <%- include('header'); -%>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <ul>
+  <main>
+    <!--ul>
       <% reports.forEach(function(report, i, arr){ -%>
         <li style="display: inline-block">
           <a href="<%= report.requestedUrl %>" title="<%= report.name %>">
@@ -9,7 +8,7 @@
           </a>
         </li>
       <% }); -%>
-    </ul>
+    </ul-->
     <div id="container" style="height:600px"></div>
     <script type="module">
       import Highcharts from 'https://code.highcharts.com/es-modules/masters/highcharts.src.js';
@@ -21,9 +20,13 @@
       Highcharts.chart('container', {
 
         chart: {
-          type: 'bubble',
+          type: 'scatter',
           plotBorderWidth: 1,
-          zoomType: 'xy'
+          zoomType: 'xy',
+          style: {
+            "fontFamily": "Helvetica, Arial, sans-serif",
+            "fontSize": "16px"
+          }
         },
 
         legend: {
@@ -46,15 +49,15 @@
 
         xAxis: {
           title: {
-            text: 'Accessibility'
+            text: 'Performance'
           },
+          min: 0
         },
 
         yAxis: {
           title: {
-            text: 'Performance'
+            text: 'Accessibility'
           },
-          min: 0,
           max: 100
         },
 
@@ -62,8 +65,8 @@
           useHTML: true,
           headerFormat: '<table>',
           pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
-            '<tr><th>Accessibility:</th><td>{point.x}</td></tr>' +
-            '<tr><th>Performance:</th><td>{point.y}</td></tr>',
+            '<tr><th>Performance:</th><td>{point.x}</td></tr>' +
+            '<tr><th>Accessibility:</th><td>{point.y}</td></tr>',
           footerFormat: '</table>',
           followPointer: true
         },
@@ -78,13 +81,14 @@
         },
 
         series: [{
-            data: [
-            <% reports.forEach(function(report, i, arr){ -%>
-              { x: <%= Math.round(report.categories.accessibility.score * 100) %>, y: <%= Math.round(report.categories.performance.score * 100) %>, name: '<%= report.tld.toUpperCase() %>', country: '<%= report.name %>' },
-            <% }); -%>
-            ]
+          data: [
+          <% reports.forEach(function(report, i, arr){ -%>
+            { x: <%= Math.round(report.categories.performance.score * 100) %>, y: <%= Math.round(report.categories.accessibility.score * 100) %>, name: '<%= report.tld.toUpperCase() %>', country: '<%= report.name %>' },
+          <% }); -%>
+          ]
         }]
 
       });
     </script>
+  </main>
 <%- include('footer'); -%>

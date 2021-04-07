@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
       return;
     }
   });
-  res.render('index', { title: 'Express', reports: reports });
+  res.render('index', { title: 'Government web performance', reports: reports });
 });
 
 module.exports = router;
