@@ -10,6 +10,10 @@ router.get('/', function(req, res, next) {
   countriesData.countries.forEach((item, i) => {
     try {
       const reportString = fs.readFileSync(`./data/${item.tld}.json`);
+      if (!reportString) {
+        console.log(`Error: File ./data/${item.tld}.json is empty.`);
+        return;
+      }
       const report = JSON.parse(reportString);
       report.tld = item.tld;
       report.name = item.name;
