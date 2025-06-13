@@ -31,5 +31,8 @@
     "express": "~5.1.0",
     "http-errors": "~2.0.0",
     "morgan": "~1.10.0"
+  },
+  "devDependencies": {
+    "lighthouse": "^12.6.1"
   }
 }
