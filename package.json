@@ -33,6 +33,6 @@
     "morgan": "~1.10.1"
   },
   "devDependencies": {
-    "lighthouse": "^13.0.0"
+    "lighthouse": "^13.0.1"
   }
 }
