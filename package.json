@@ -1,11 +1,14 @@
 {
   "name": "gov-web-performance",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "European Government Website Performance Dashboard",
   "scripts": {
-    "start": "node ./bin/www",
-    "lighthouse": "node ./bin/lighthouse"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "lighthouse": "node scripts/lighthouse-audit.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +19,7 @@
     "web",
     "performance",
     "lighthouse",
-    "report"
+    "accessibility"
   ],
   "author": "alex-ju",
   "license": "MIT",
@@ -25,14 +28,22 @@
   },
   "homepage": "https://github.com/alex-ju/gov-web-performance#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.7",
-    "debug": "~4.4.3",
-    "ejs": "~3.1.10",
-    "express": "~5.2.1",
-    "http-errors": "~2.0.1",
-    "morgan": "~1.10.1"
+    "@carbon/charts": "^1.20.0",
+    "@carbon/charts-react": "^1.20.0",
+    "@carbon/react": "^1.68.0",
+    "d3": "^7.9.0",
+    "next": "^15.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "lighthouse": "^13.0.1"
+    "@types/d3": "^7.4.3",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^13.0.1",
+    "sass": "^1.94.2",
+    "typescript": "^5.6.3"
   }
 }

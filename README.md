@@ -1,103 +1,167 @@
-# Government Web Performance
+# European Government Website Performance Dashboard
 
-A web application that analyzes and visualizes the performance and accessibility metrics of European government websites using Google Lighthouse.
+A comprehensive web application built with Next.js and Carbon Design System to analyze and visualize the performance and accessibility metrics of European government websites using Google Lighthouse reports.
 
-## Overview
-
-This project automatically generates Google Lighthouse reports for government websites across 45 European countries and displays the results in an interactive scatter plot visualization. It helps compare web performance and accessibility scores across different government portals.
+🔗 **Live Demo:** [https://alex-ju.github.io/gov-web-performance/](https://alex-ju.github.io/gov-web-performance/)
 
 ## Features
 
-- **Automated Lighthouse Testing**: Runs Google Lighthouse audits on government websites from 45 European countries
-- **Performance Metrics**: Captures performance scores, accessibility scores, and screenshots
-- **Interactive Visualization**: Displays results in a Highcharts scatter plot showing the relationship between performance and accessibility
-- **Data Persistence**: Stores Lighthouse reports as JSON files for historical tracking
-- **Express Web Server**: Serves an interactive dashboard to view and compare results
+- 📊 **Interactive Dashboard** - Overview of average performance metrics across all countries
+- 🏆 **Rankings** - Compare countries across 5 key metrics with month-over-month change tracking
+- 🔍 **Comparison Tool** - Side-by-side analysis with radar charts and detailed breakdowns
+- 🤖 **Automated Audits** - Monthly Lighthouse reports via GitHub Actions
+- 📈 **Historical Tracking** - Monitor improvements and trends over time
+- ♿ **Accessible Design** - Built with Carbon Design System following WCAG guidelines
 
-## Installation
+## Metrics Tracked
 
-```bash
-npm install
-```
+The dashboard tracks five core Google Lighthouse metrics:
 
-## Usage
+1. **Performance** - Page load speed and optimization
+2. **Accessibility** - Inclusive design and usability for all users
+3. **Best Practices** - Adherence to modern web development standards
+4. **SEO** - Search engine optimization and discoverability
 
-### 1. Generate Lighthouse Reports
+## Getting Started
 
-Run the Lighthouse script to analyze all government websites listed in `data/countries.json`:
+### Prerequisites
 
-```bash
-npm run lighthouse
-```
+- Node.js 20 or higher
+- npm or yarn
 
-This will:
-- Iterate through all 45 European government websites
-- Run Google Lighthouse audits on each site
-- Save the results as JSON files in the `data/` directory (e.g., `uk.json`, `de.json`, etc.)
-- Skip websites that already have existing reports
+### Installation
 
-**Note**: This process can take a significant amount of time as it runs full Lighthouse audits on each website.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/alex-ju/gov-web-performance.git
+   cd gov-web-performance
+   ```
 
-### 2. Start the Web Application
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Launch the Express server to view the interactive dashboard:
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm start
-```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-Then open your browser and navigate to `http://localhost:3000` to see:
-- An interactive scatter plot comparing performance vs. accessibility scores
-- Country labels (using TLD codes like UK, DE, FR)
-- Tooltips showing detailed metrics for each country
-- The ability to zoom and explore the data
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lighthouse` - Run Lighthouse audits manually
+- `npm run type-check` - Check TypeScript types
 
 ## Project Structure
 
 ```
 gov-web-performance/
-├── bin/
-│   ├── lighthouse      # Script to generate Lighthouse reports
-│   └── www             # Express server startup script
-├── data/
-│   ├── countries.json  # List of 45 European government websites
-│   └── *.json          # Individual Lighthouse reports per country
-├── routes/
-│   └── index.js        # Express route handlers
-├── views/
-│   ├── header.ejs      # Page header template
-│   ├── footer.ejs      # Page footer template
-│   ├── index.ejs       # Main dashboard with Highcharts visualization
-│   └── error.ejs       # Error page template
-├── public/             # Static assets
-├── app.js              # Express application configuration
-└── package.json        # Project dependencies and scripts
-
+├── app/                      # Next.js app directory
+│   ├── page.tsx             # Dashboard homepage
+│   ├── rankings/            # Rankings page
+│   ├── compare/             # Comparison tool
+│   └── globals.css          # Global styles with Carbon
+├── components/              # Reusable React components
+│   ├── Header.tsx           # Navigation header
+│   └── MetricCard.tsx       # Metric display card
+├── types/                   # TypeScript type definitions
+│   └── index.ts             # All interfaces and types
+├── utils/                   # Utility functions
+│   └── dataLoader.ts        # Data fetching and processing
+├── scripts/                 # Automation scripts
+│   └── lighthouse-audit.js  # Lighthouse audit runner
+├── public/                  # Static assets
+│   └── data/
+│       ├── countries.json   # List of countries and URLs
+│       └── reports/         # Monthly Lighthouse reports
+│           ├── manifest.json
+│           └── YYYY-MM.json
+└── .github/workflows/       # GitHub Actions
+    ├── lighthouse-audit.yml # Monthly audit workflow
+    └── deploy.yml           # Deployment workflow
 ```
+
+## Adding New Countries
+
+To add a new country to the dashboard:
+
+1. Edit `public/data/countries.json`
+2. Add a new entry with the following format:
+   ```json
+   {
+     "name": "Country Name",
+     "url": "https://government-website.tld",
+     "tld": "tld"
+   }
+   ```
+3. The next Lighthouse audit will automatically include the new country
 
 ## How It Works
 
-1. **Data Collection**: The `bin/lighthouse` script reads the list of government websites from `data/countries.json`
-2. **Lighthouse Audits**: For each website, it runs `npx lighthouse [url] --output json` and saves the results
-3. **Data Processing**: The Express app reads all JSON reports and extracts performance and accessibility scores
-4. **Visualization**: The scores are plotted on an interactive Highcharts scatter plot where:
-   - X-axis = Performance score (0-100)
-   - Y-axis = Accessibility score (0-100)
-   - Each point represents a country (labeled with its TLD)
+### Data Collection
 
-## Technologies Used
+1. **Monthly Audits**: A GitHub Actions workflow runs on the 1st of each month
+2. **Lighthouse Execution**: The script audits all government websites listed in `countries.json`
+3. **Report Generation**: Results are saved as JSON files in `public/data/reports/`
+4. **Automatic Commit**: The workflow commits the new report back to the repository
 
-- **Node.js & Express**: Web server framework
-- **Google Lighthouse**: Web performance auditing tool
-- **Highcharts**: Interactive data visualization
-- **EJS**: Templating engine for server-side rendering
+### Data Loading
 
-## Resources
+- The application dynamically fetches report data at runtime (client-side)
+- No rebuild required when new reports are added
+- The `manifest.json` file tracks all available reports for discovery
 
-- [Google Lighthouse Documentation](https://developers.google.com/web/tools/lighthouse)
-- [MDN: Measuring Performance](https://developer.mozilla.org/en-US/docs/Learn/Performance/Measuring_performance)
-- [MDN: What is Web Performance](https://developer.mozilla.org/en-US/docs/Learn/Performance/What_is_web_performance)
+### Deployment
+
+- The application is built as a static site using Next.js `output: 'export'`
+- Deployed to GitHub Pages via GitHub Actions on every push to main
+- Base path is configured for GitHub Pages hosting
+
+## Extending the Dashboard
+
+### Adding New Metrics
+
+1. Update the `LighthouseMetrics` interface in `types/index.ts`
+2. Modify `scripts/lighthouse-audit.js` to extract the new metrics
+3. Update components to display the new metrics
+
+### Customizing Visualizations
+
+The dashboard uses Carbon Charts for visualizations. You can:
+- Add new chart types (line charts, bar charts, etc.)
+- Customize chart options and themes
+- Create new comparison views
+
+See the [Carbon Charts documentation](https://charts.carbondesignsystem.com/) for more options.
+
+## GitHub Pages Setup
+
+To deploy this project to GitHub Pages:
+
+1. Enable GitHub Pages in your repository settings
+2. Set the source to "GitHub Actions"
+3. Push to the main branch to trigger deployment
+4. The site will be available at `https://[username].github.io/gov-web-performance/`
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Google Lighthouse](https://github.com/GoogleChrome/lighthouse) for the auditing engine
+- [Carbon Design System](https://carbondesignsystem.com/) for the UI components
+- European government websites for providing public services online
+
+## Contact
+
+For questions or feedback, please [open an issue](https://github.com/alex-ju/gov-web-performance/issues).
