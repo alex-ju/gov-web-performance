@@ -1,0 +1,227 @@
+const fs = require('fs');
+const path = require('path');
+const lighthouse = require('lighthouse').default;
+const chromeLauncher = require('chrome-launcher');
+
+// Read countries data
+const countriesPath = path.join(__dirname, '..', 'public', 'data', 'countries.json');
+const countriesData = JSON.parse(fs.readFileSync(countriesPath, 'utf8'));
+let countries = countriesData.countries;
+
+// Filter by TLD if argument provided
+const targetTld = process.argv[2];
+if (targetTld) {
+  countries = countries.filter(c => c.tld === targetTld);
+  if (countries.length === 0) {
+    console.error(`No countries found with TLD: ${targetTld}`);
+    process.exit(1);
+  }
+  console.log(`Filtering for TLD: ${targetTld}`);
+}
+
+// Configuration
+const REPORTS_DIR = path.join(__dirname, '..', 'public', 'data', 'reports');
+const MANIFEST_PATH = path.join(REPORTS_DIR, 'manifest.json');
+
+// Ensure reports directory exists
+if (!fs.existsSync(REPORTS_DIR)) {
+  fs.mkdirSync(REPORTS_DIR, { recursive: true });
+}
+
+// Lighthouse options
+const lighthouseOptions = {
+  logLevel: 'info',
+  output: 'json',
+  onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
+  formFactor: 'desktop',
+  screenEmulation: {
+    mobile: false,
+    width: 1350,
+    height: 940,
+    deviceScaleFactor: 1,
+    disabled: false,
+  },
+  throttling: {
+    rttMs: 40,
+    throughputKbps: 10240,
+    cpuSlowdownMultiplier: 1,
+  },
+};
+
+async function runLighthouse(url) {
+  const chrome = await chromeLauncher.launch({
+    chromeFlags: ['--headless', '--ignore-certificate-errors', '--no-sandbox']
+  });
+  const options = {
+    ...lighthouseOptions,
+    port: chrome.port,
+    maxWaitForLoad: 45000,
+  };
+
+  try {
+    const runnerResult = await lighthouse(url, options);
+    await chrome.kill();
+    return runnerResult;
+  } catch (error) {
+    await chrome.kill();
+    throw error;
+  }
+}
+
+function extractMetrics(lhr) {
+  const categories = lhr.categories;
+  return {
+    performance: Math.round(categories.performance.score * 100),
+    accessibility: Math.round(categories.accessibility.score * 100),
+    bestPractices: Math.round(categories['best-practices'].score * 100),
+    seo: Math.round(categories.seo.score * 100),
+  };
+}
+
+async function auditAllCountries() {
+  console.log(`Starting Lighthouse audits for ${countries.length} countries...`);
+  const reports = [];
+  const timestamp = new Date().toISOString();
+
+  for (let i = 0; i < countries.length; i++) {
+    const country = countries[i];
+    console.log(`[${i + 1}/${countries.length}] Auditing ${country.name} (${country.url})...`);
+
+    try {
+      const result = await runLighthouse(country.url);
+      const metrics = extractMetrics(result.lhr);
+
+      reports.push({
+        country: country.name,
+        tld: country.tld,
+        url: country.url,
+        timestamp,
+        metrics,
+      });
+
+      console.log(`  ✓ Performance: ${metrics.performance}, Accessibility: ${metrics.accessibility}`);
+    } catch (error) {
+      console.error(`  ✗ Failed to audit ${country.name}:`, error.message);
+      // Add a report with zero scores for failed audits
+      reports.push({
+        country: country.name,
+        tld: country.tld,
+        url: country.url,
+        timestamp,
+        metrics: {
+          performance: 0,
+          accessibility: 0,
+          bestPractices: 0,
+          seo: 0,
+        },
+      });
+    }
+
+    // Add a small delay between requests to be respectful
+    if (i < countries.length - 1) {
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+  }
+
+  return reports;
+}
+
+function saveReport(newReports) {
+  const now = new Date();
+  const month = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  const reportFilename = `${month}.json`;
+  const reportPath = path.join(REPORTS_DIR, reportFilename);
+
+  let allReports = [];
+  let generatedAt = now.toISOString();
+
+  // Read existing report if it exists
+  if (fs.existsSync(reportPath)) {
+    try {
+      const existingData = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      allReports = existingData.reports || [];
+      // Keep original generatedAt if we are just updating some entries, 
+      // or update it? Let's update it to reflect latest change.
+      // Actually, maybe keep the original creation time? 
+      // The user asked to "override new entries, while keeping all the other countries in place".
+      // Let's update generatedAt to show when the file was last modified.
+    } catch (error) {
+      console.warn(`Could not parse existing report at ${reportPath}, starting fresh.`);
+    }
+  }
+
+  // Merge new reports
+  for (const newReport of newReports) {
+    const index = allReports.findIndex(r => r.country === newReport.country);
+    if (index !== -1) {
+      allReports[index] = newReport;
+    } else {
+      allReports.push(newReport);
+    }
+  }
+
+  // Sort by country name
+  allReports.sort((a, b) => a.country.localeCompare(b.country));
+
+  const monthlyReport = {
+    month,
+    generatedAt,
+    reports: allReports,
+  };
+
+  // Save the monthly report
+  fs.writeFileSync(reportPath, JSON.stringify(monthlyReport, null, 2));
+  console.log(`\nReport saved to: ${reportPath}`);
+
+  // Update manifest
+  updateManifest(month, reportFilename, generatedAt);
+
+  return reportPath;
+}
+
+function updateManifest(month, filename, generatedAt) {
+  let manifest = { reports: [] };
+
+  // Read existing manifest if it exists
+  if (fs.existsSync(MANIFEST_PATH)) {
+    manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+  }
+
+  // Check if this month already exists
+  const existingIndex = manifest.reports.findIndex(r => r.month === month);
+
+  if (existingIndex >= 0) {
+    // Update existing entry
+    manifest.reports[existingIndex] = { month, filename, generatedAt };
+  } else {
+    // Add new entry
+    manifest.reports.push({ month, filename, generatedAt });
+  }
+
+  // Sort by month descending (newest first)
+  manifest.reports.sort((a, b) => b.month.localeCompare(a.month));
+
+  // Save manifest
+  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
+  console.log(`Manifest updated: ${MANIFEST_PATH}`);
+}
+
+// Main execution
+async function main() {
+  try {
+    const reports = await auditAllCountries();
+    const reportPath = saveReport(reports);
+
+    console.log('\n✓ Lighthouse audit completed successfully!');
+    // We can't easily know the total count in the file without reading it back or returning it from saveReport.
+    // But saveReport returns the path.
+    // Let's just log the number of *audited* countries here.
+    console.log(`  Countries audited in this run: ${reports.length}`);
+    console.log(`  Report location: ${reportPath}`);
+  } catch (error) {
+    console.error('\n✗ Lighthouse audit failed:', error);
+    process.exit(1);
+  }
+}
+
+main();

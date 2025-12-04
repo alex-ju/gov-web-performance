@@ -1,0 +1,46 @@
+name: Monthly Lighthouse Audit
+
+on:
+  schedule:
+    # Run on the 1st of every month at midnight UTC
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  lighthouse-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install Chrome
+        run: |
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+      
+      - name: Run Lighthouse audits
+        run: npm run lighthouse
+      
+      - name: Commit and push report
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add public/data/reports/
+          git diff --staged --quiet || git commit -m "chore: add lighthouse report for $(date +%Y-%m)"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
