@@ -1,4 +1,4 @@
-# Governments website performance dashboard
+# Governments web performance dashboard
 
 A web application built with Next.js and Carbon Design System to analyze and visualize the performance and accessibility metrics of government websites using Google Lighthouse reports.
 

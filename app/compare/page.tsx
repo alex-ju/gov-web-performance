@@ -34,9 +34,9 @@ export default function ComparePage() {
         // Pre-select first 3 countries for demo
         if (countriesData.length >= 3) {
           setSelectedCountries([
-            countriesData[0].tld,
-            countriesData[1].tld,
-            countriesData[2].tld,
+            countriesData[10].tld,
+            countriesData[20].tld,
+            countriesData[22].tld,
           ]);
         }
       } catch (err) {
@@ -101,7 +101,7 @@ export default function ComparePage() {
     data: {
       groupMapsTo: 'country',
     },
-    height: '400px',
+    height: '500px',
   };
 
   return (
@@ -112,7 +112,7 @@ export default function ComparePage() {
           <Column lg={16} md={8} sm={4}>
             <div style={{ marginBottom: '2rem' }}>
               <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>
-                Compare Countries
+                Compare countries
               </h1>
               <p style={{ fontSize: '1.125rem', color: 'var(--cds-text-secondary)', marginBottom: '2rem' }}>
                 Select multiple countries to compare their performance and accessibility metrics side by side.

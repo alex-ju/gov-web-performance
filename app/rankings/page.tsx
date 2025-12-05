@@ -84,10 +84,10 @@ export default function RankingsPage() {
           <Column lg={16} md={8} sm={4}>
             <div style={{ marginBottom: '2rem' }}>
               <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>
-                Country Rankings
+                Country rankings
               </h1>
               <p style={{ fontSize: '1.125rem', color: 'var(--cds-text-secondary)' }}>
-                Compare how European government websites rank across different performance metrics.
+                Compare how government websites rank across different performance metrics.
                 Rankings are updated monthly based on Google Lighthouse audits.
               </p>
             </div>

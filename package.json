@@ -1,7 +1,7 @@
 {
   "name": "gov-web-performance",
   "version": "1.0.0",
-  "description": "European Government Website Performance Dashboard",
+  "description": "Government Website Performance Dashboard",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

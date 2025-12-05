@@ -8,17 +8,16 @@ import {
   HeaderGlobalBar,
   HeaderGlobalAction,
 } from '@carbon/react';
-import { Dashboard, ChartLine, Compare } from '@carbon/icons-react';
-import Link from 'next/link';
+import { Dashboard } from '@carbon/icons-react';
 
 const BASE_PATH = process.env.NODE_ENV === 'production' ? '/gov-web-performance' : '';
 
 export default function Header() {
   return (
-    <CarbonHeader aria-label="European Government Website Performance">
+    <CarbonHeader aria-label="Government Web Performance">
       <HeaderName href={`${BASE_PATH}/`} prefix="">
         <Dashboard size={20} style={{ marginRight: '0.5rem' }} />
-        Gov Performance Dashboard
+        Gov Web Performance
       </HeaderName>
       <HeaderNavigation aria-label="Main navigation">
         <HeaderMenuItem href={`${BASE_PATH}/`}>

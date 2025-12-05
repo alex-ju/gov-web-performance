@@ -49,9 +49,9 @@ export default function MetricCard({ title, score, previousScore, description }:
   return (
     <Tile className="metric-card">
       <div style={{ marginBottom: '0.5rem' }}>
-        <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--cds-text-secondary)' }}>
+        <h3 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--cds-text-secondary)' }}>
           {title}
-        </h4>
+        </h3>
       </div>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', marginBottom: '0.25rem' }}>
         <span className={scoreClass} style={{ fontSize: '2.5rem', fontWeight: 700, lineHeight: 1 }}>
