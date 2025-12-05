@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Grid, Column, Loading, UnorderedList, ListItem, Link } from '@carbon/react';
+import { Grid, Column, Loading, UnorderedList, ListItem } from '@carbon/react';
 import Header from '@/components/Header';
 import MetricCard from '@/components/MetricCard';
 import { MonthlyReport } from '@/types';
@@ -117,12 +117,12 @@ export default function Home() {
           </Column>
 
           <Column lg={16} md={8} sm={4}>
-            <div style={{ marginTop: '3rem', background: 'var(--cds-layer-01)', borderRadius: '4px' }}>
+            <div style={{ marginTop: '3rem', maxWidth: '800px' }}>
               <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
                 About this dashboard
               </h2>
               <p style={{ marginBottom: '1rem', color: 'var(--cds-text-secondary)' }}>
-                This dashboard provides insights into the digital performance of government websites.
+                This dashboard provides insights into the digital performance of government websites.<br />
                 Using Google Lighthouse, we measure four key metrics that impact user experience:
               </p>
               <UnorderedList style={{ marginLeft: '1.5rem', color: 'var(--cds-text-secondary)', lineHeight: 1.6 }}>
@@ -132,8 +132,8 @@ export default function Home() {
                 <ListItem><strong>SEO:</strong> Search engine discoverability and ranking factors</ListItem>
               </UnorderedList>
               <p style={{ marginTop: '1rem', color: 'var(--cds-text-secondary)' }}>
-                Explore the <Link inline href={`${process.env.NODE_ENV === 'production' ? '/gov-web-performance' : ''}/rankings`}>Rankings</Link> page
-                to see how countries compare, or use the <Link inline href={`${process.env.NODE_ENV === 'production' ? '/gov-web-performance' : ''}/compare`}>Compare</Link> tool
+                Explore the <a href={`${process.env.NODE_ENV === 'production' ? '/gov-web-performance' : ''}/rankings`}>Rankings</a> or
+                use the <a href={`${process.env.NODE_ENV === 'production' ? '/gov-web-performance' : ''}/compare`}>Compare</a> tool
                 to analyze specific countries in detail.
               </p>
             </div>

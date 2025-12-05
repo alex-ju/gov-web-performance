@@ -1,7 +1,15 @@
+// Import Carbon's compiled CSS which includes CSS custom properties
+@use '@carbon/react/scss/themes';
+@use '@carbon/react/scss/theme' with (
+  $theme: themes.$white
+);
 @use '@carbon/react';
 @import '@carbon/charts-react/styles.css';
 
 :root {
+  // Include the CSS custom properties
+  @include theme.theme();
+  
   --max-width: 1280px;
 }
 
@@ -25,11 +33,6 @@ body {
 
 a {
   color: var(--cds-link-primary);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 /* Custom utilities */
@@ -55,7 +58,7 @@ a:hover {
 }
 
 .score-fair {
-  color: var(--cds-support-warning);
+  color: var(--cds-support-caution-major);
 }
 
 .score-poor {

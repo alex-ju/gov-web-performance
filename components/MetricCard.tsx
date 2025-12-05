@@ -1,7 +1,7 @@
 'use client';
 
 import { Tile } from '@carbon/react';
-import { ArrowUp, ArrowDown, Subtract } from '@carbon/icons-react';
+import { ArrowUp, ArrowDown, Subtract, CircleSolid } from '@carbon/icons-react';
 
 interface MetricCardProps {
   title: string;
@@ -54,7 +54,7 @@ export default function MetricCard({ title, score, previousScore, description }:
         </h3>
       </div>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', marginBottom: '0.25rem' }}>
-        <span className={scoreClass} style={{ fontSize: '2.5rem', fontWeight: 700, lineHeight: 1 }}>
+        <span style={{ fontSize: '2.5rem', fontWeight: 700, lineHeight: 1, color: 'var(--cds-text-primary)' }}>
           {score}
         </span>
         <span style={{ fontSize: '1rem', color: 'var(--cds-text-secondary)' }}>
@@ -62,8 +62,9 @@ export default function MetricCard({ title, score, previousScore, description }:
         </span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-        <span className={scoreClass} style={{ fontSize: '0.875rem', fontWeight: 600 }}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--cds-text-primary)' }}>
           {scoreLabel}
+          <CircleSolid size={8} className={scoreClass} />
         </span>
         {change !== undefined && (
           <span className={changeClass} style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.875rem' }}>

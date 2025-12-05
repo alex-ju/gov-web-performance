@@ -19,7 +19,7 @@ import {
   Grid,
   Column,
 } from '@carbon/react';
-import { ArrowUp, ArrowDown, Subtract } from '@carbon/icons-react';
+import { ArrowUp, ArrowDown, Subtract, CircleSolid } from '@carbon/icons-react';
 import Header from '@/components/Header';
 import { MonthlyReport, CountryRanking } from '@/types';
 import { fetchAllReports, calculateRankings } from '@/utils/dataLoader';
@@ -163,7 +163,7 @@ function RankingTable({ rankings }: { rankings: CountryRanking[] }) {
                     if (cell.info.header === 'rank') {
                       return (
                         <TableCell key={cell.id}>
-                          <strong style={{ fontSize: '1.125rem' }}>#{cell.value}</strong>
+                          <strong>#{cell.value}</strong>
                         </TableCell>
                       );
                     }
@@ -177,9 +177,10 @@ function RankingTable({ rankings }: { rankings: CountryRanking[] }) {
 
                       return (
                         <TableCell key={cell.id}>
-                          <strong className={scoreClass} style={{ fontSize: '1.125rem' }}>
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontWeight: 600 }}>
                             {score}
-                          </strong>
+                            <CircleSolid size={8} className={scoreClass} />
+                          </span>
                         </TableCell>
                       );
                     }

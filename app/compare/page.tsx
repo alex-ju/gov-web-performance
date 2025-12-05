@@ -147,7 +147,7 @@ export default function ComparePage() {
               {selectedReports.map(report => (
                 <Column lg={16} md={8} sm={4} key={report.tld}>
                   <Tile style={{ marginBottom: '2rem' }}>
-                    <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: 600 }}>
                       {report.country}
                     </h2>
                     <Grid condensed>
