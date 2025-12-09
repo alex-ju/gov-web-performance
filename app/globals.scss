@@ -1,4 +1,9 @@
 // Import Carbon's compiled CSS which includes CSS custom properties
+// Configure Carbon to use Akamai CDN for fonts instead of ~@ibm/plex paths
+// This avoids tilde-based module URLs that fail in Next.js 16 production builds
+@use '@carbon/react/scss/config' with (
+  $use-akamai-cdn: true
+);
 @use '@carbon/react/scss/themes';
 @use '@carbon/react/scss/theme' with (
   $theme: themes.$white
