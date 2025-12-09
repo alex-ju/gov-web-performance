@@ -70,11 +70,70 @@ async function runLighthouse(url) {
 
 function extractMetrics(lhr) {
   const categories = lhr.categories;
+  const audits = lhr.audits;
+
+  // Extract failed/warning audits for each category
+  const extractAuditsForCategory = (categoryId) => {
+    const category = categories[categoryId];
+    const auditRefs = category.auditRefs || [];
+    const failedAudits = [];
+
+    auditRefs.forEach(ref => {
+      const audit = audits[ref.id];
+      if (!audit) return;
+
+      // Include failed audits (score < 1) or informative audits with warnings
+      const score = audit.score !== null ? audit.score : 1;
+      if (score < 1 || (audit.scoreDisplayMode === 'informative' && audit.details)) {
+        const severity = score === 0 ? 'high' : score < 0.5 ? 'medium' : 'low';
+
+        failedAudits.push({
+          id: ref.id,
+          title: audit.title,
+          description: audit.description,
+          score: audit.score,
+          scoreDisplayMode: audit.scoreDisplayMode,
+          displayValue: audit.displayValue || null,
+          severity: severity,
+          weight: ref.weight || 0,
+          // Extract numeric value for estimated impact
+          numericValue: audit.numericValue || null,
+          numericUnit: audit.numericUnit || null,
+        });
+      }
+    });
+
+    // Sort by severity (high -> medium -> low) and then by weight
+    failedAudits.sort((a, b) => {
+      const severityOrder = { high: 0, medium: 1, low: 2 };
+      if (severityOrder[a.severity] !== severityOrder[b.severity]) {
+        return severityOrder[a.severity] - severityOrder[b.severity];
+      }
+      return b.weight - a.weight;
+    });
+
+    return failedAudits;
+  };
+
   return {
     performance: Math.round(categories.performance.score * 100),
     accessibility: Math.round(categories.accessibility.score * 100),
     bestPractices: Math.round(categories['best-practices'].score * 100),
     seo: Math.round(categories.seo.score * 100),
+    audits: {
+      performance: extractAuditsForCategory('performance'),
+      accessibility: extractAuditsForCategory('accessibility'),
+      bestPractices: extractAuditsForCategory('best-practices'),
+      seo: extractAuditsForCategory('seo'),
+    },
+    // Store timing metrics for performance insights
+    timing: {
+      firstContentfulPaint: audits['first-contentful-paint']?.numericValue || null,
+      largestContentfulPaint: audits['largest-contentful-paint']?.numericValue || null,
+      totalBlockingTime: audits['total-blocking-time']?.numericValue || null,
+      cumulativeLayoutShift: audits['cumulative-layout-shift']?.numericValue || null,
+      speedIndex: audits['speed-index']?.numericValue || null,
+    }
   };
 }
 
@@ -129,54 +188,77 @@ async function auditAllCountries() {
 function saveReport(newReports) {
   const now = new Date();
   const month = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
-  const reportFilename = `${month}.json`;
-  const reportPath = path.join(REPORTS_DIR, reportFilename);
+  const summaryFilename = `${month}-summary.json`;
+  const summaryPath = path.join(REPORTS_DIR, summaryFilename);
+  const detailsDir = path.join(REPORTS_DIR, month);
 
   let allReports = [];
   let generatedAt = now.toISOString();
 
-  // Read existing report if it exists
-  if (fs.existsSync(reportPath)) {
+  // Ensure details directory exists
+  if (!fs.existsSync(detailsDir)) {
+    fs.mkdirSync(detailsDir, { recursive: true });
+  }
+
+  // Read existing summary if it exists
+  if (fs.existsSync(summaryPath)) {
     try {
-      const existingData = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      const existingData = JSON.parse(fs.readFileSync(summaryPath, 'utf8'));
       allReports = existingData.reports || [];
-      // Keep original generatedAt if we are just updating some entries, 
-      // or update it? Let's update it to reflect latest change.
-      // Actually, maybe keep the original creation time? 
-      // The user asked to "override new entries, while keeping all the other countries in place".
-      // Let's update generatedAt to show when the file was last modified.
     } catch (error) {
-      console.warn(`Could not parse existing report at ${reportPath}, starting fresh.`);
+      console.warn(`Could not parse existing summary at ${summaryPath}, starting fresh.`);
     }
   }
 
-  // Merge new reports
+  // Merge new reports and save individual detail files
   for (const newReport of newReports) {
     const index = allReports.findIndex(r => r.country === newReport.country);
+
+    // Create summary version (without audits and timing)
+    const summaryReport = {
+      country: newReport.country,
+      tld: newReport.tld,
+      url: newReport.url,
+      timestamp: newReport.timestamp,
+      metrics: {
+        performance: newReport.metrics.performance,
+        accessibility: newReport.metrics.accessibility,
+        bestPractices: newReport.metrics.bestPractices,
+        seo: newReport.metrics.seo,
+      }
+    };
+
     if (index !== -1) {
-      allReports[index] = newReport;
+      allReports[index] = summaryReport;
     } else {
-      allReports.push(newReport);
+      allReports.push(summaryReport);
     }
+
+    // Save individual detail file with full audit data
+    const detailFilename = `${newReport.tld}.json`;
+    const detailPath = path.join(detailsDir, detailFilename);
+    fs.writeFileSync(detailPath, JSON.stringify(newReport, null, 2));
+    console.log(`  Detail file saved: ${month}/${detailFilename}`);
   }
 
   // Sort by country name
   allReports.sort((a, b) => a.country.localeCompare(b.country));
 
-  const monthlyReport = {
+  const monthlySummary = {
     month,
     generatedAt,
     reports: allReports,
   };
 
-  // Save the monthly report
-  fs.writeFileSync(reportPath, JSON.stringify(monthlyReport, null, 2));
-  console.log(`\nReport saved to: ${reportPath}`);
+  // Save the monthly summary
+  fs.writeFileSync(summaryPath, JSON.stringify(monthlySummary, null, 2));
+  console.log(`\nSummary saved to: ${summaryPath}`);
+  console.log(`Detail files saved to: ${detailsDir}/`);
 
   // Update manifest
-  updateManifest(month, reportFilename, generatedAt);
+  updateManifest(month, summaryFilename, generatedAt);
 
-  return reportPath;
+  return summaryPath;
 }
 
 function updateManifest(month, filename, generatedAt) {

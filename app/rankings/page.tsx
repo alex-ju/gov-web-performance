@@ -221,6 +221,25 @@ function RankingTable({ rankings }: { rankings: CountryRanking[] }) {
                         );
                       }
                     }
+                    if (cell.info.header === 'country') {
+                      const baseUrl = process.env.NODE_ENV === 'production' ? '/gov-web-performance' : '';
+                      return (
+                        <TableCell key={cell.id}>
+                          <a
+                            href={`${baseUrl}/country/${row.id}`}
+                            style={{
+                              color: 'var(--cds-link-primary)',
+                              textDecoration: 'none',
+                              fontWeight: 500
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                            onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+                          >
+                            {cell.value}
+                          </a>
+                        </TableCell>
+                      );
+                    }
                     return <TableCell key={cell.id}>{cell.value}</TableCell>;
                   })}
                 </TableRow>

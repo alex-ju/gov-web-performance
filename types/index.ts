@@ -5,12 +5,45 @@ export interface Country {
   tld: string;
 }
 
+// Individual audit failure/warning
+export interface AuditIssue {
+  id: string;
+  title: string;
+  description: string;
+  score: number | null;
+  scoreDisplayMode: string;
+  displayValue: string | null;
+  severity: 'high' | 'medium' | 'low';
+  weight: number;
+  numericValue: number | null;
+  numericUnit: string | null;
+}
+
+// Categorized audit issues
+export interface CategorizedAudits {
+  performance: AuditIssue[];
+  accessibility: AuditIssue[];
+  bestPractices: AuditIssue[];
+  seo: AuditIssue[];
+}
+
+// Performance timing metrics
+export interface TimingMetrics {
+  firstContentfulPaint: number | null;
+  largestContentfulPaint: number | null;
+  totalBlockingTime: number | null;
+  cumulativeLayoutShift: number | null;
+  speedIndex: number | null;
+}
+
 // Lighthouse metrics scores (0-100)
 export interface LighthouseMetrics {
   performance: number;
   accessibility: number;
   bestPractices: number;
   seo: number;
+  audits?: CategorizedAudits;
+  timing?: TimingMetrics;
 }
 
 // Individual country report

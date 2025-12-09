@@ -1,4 +1,4 @@
-import { Country, MonthlyReport, ReportManifest, CountryHistoricalData, MetricRankings, LighthouseMetrics } from '@/types';
+import { Country, MonthlyReport, CountryReport, ReportManifest, CountryHistoricalData, MetricRankings, LighthouseMetrics } from '@/types';
 
 const BASE_PATH = process.env.NODE_ENV === 'production' ? '/gov-web-performance' : '';
 
@@ -32,9 +32,50 @@ export async function fetchReportManifest(): Promise<ReportManifest> {
 }
 
 /**
- * Fetch a specific monthly report
+ * Fetch a specific monthly summary report (lightweight - no detailed audits)
+ */
+export async function fetchMonthlySummary(month: string): Promise<MonthlyReport | null> {
+  try {
+    const response = await fetch(`${BASE_PATH}/data/reports/${month}-summary.json`);
+    if (!response.ok) {
+      return null;
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(`Failed to fetch summary for ${month}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Fetch detailed country report for a specific month and country
+ */
+export async function fetchCountryDetail(
+  month: string,
+  tld: string
+): Promise<CountryReport | null> {
+  try {
+    const response = await fetch(`${BASE_PATH}/data/reports/${month}/${tld}.json`);
+    if (!response.ok) {
+      return null;
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(`Failed to fetch detail for ${tld} in ${month}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Fetch a specific monthly report (DEPRECATED - use fetchMonthlySummary instead)
+ * Kept for backward compatibility
  */
 export async function fetchMonthlyReport(month: string): Promise<MonthlyReport | null> {
+  // Try summary first (new format)
+  let report = await fetchMonthlySummary(month);
+  if (report) return report;
+
+  // Fallback to old format for existing data
   try {
     const response = await fetch(`${BASE_PATH}/data/reports/${month}.json`);
     if (!response.ok) {
@@ -48,18 +89,18 @@ export async function fetchMonthlyReport(month: string): Promise<MonthlyReport |
 }
 
 /**
- * Fetch all available reports
+ * Fetch all available summary reports (lightweight)
  */
 export async function fetchAllReports(): Promise<MonthlyReport[]> {
   const manifest = await fetchReportManifest();
   const reports = await Promise.all(
-    manifest.reports.map(({ month }) => fetchMonthlyReport(month))
+    manifest.reports.map(({ month }) => fetchMonthlySummary(month))
   );
   return reports.filter((report): report is MonthlyReport => report !== null);
 }
 
 /**
- * Get the latest report
+ * Get the latest summary report (lightweight)
  */
 export async function fetchLatestReport(): Promise<MonthlyReport | null> {
   const manifest = await fetchReportManifest();
@@ -69,7 +110,18 @@ export async function fetchLatestReport(): Promise<MonthlyReport | null> {
 
   // Reports should be sorted by month descending in manifest
   const latestMonth = manifest.reports[0].month;
-  return fetchMonthlyReport(latestMonth);
+  return fetchMonthlySummary(latestMonth);
+}
+
+/**
+ * Get the latest month identifier
+ */
+export async function getLatestMonth(): Promise<string | null> {
+  const manifest = await fetchReportManifest();
+  if (manifest.reports.length === 0) {
+    return null;
+  }
+  return manifest.reports[0].month;
 }
 
 /**
@@ -78,16 +130,25 @@ export async function fetchLatestReport(): Promise<MonthlyReport | null> {
 export function calculateRankings(
   currentReport: MonthlyReport,
   previousReport: MonthlyReport | null,
-  metric: keyof LighthouseMetrics
+  metric: 'performance' | 'accessibility' | 'bestPractices' | 'seo'
 ): MetricRankings {
   // Sort countries by metric score (descending)
   const sorted = [...currentReport.reports].sort(
-    (a, b) => b.metrics[metric] - a.metrics[metric]
+    (a, b) => {
+      const scoreA = a.metrics[metric];
+      const scoreB = b.metrics[metric];
+      // Ensure we're comparing numbers
+      if (typeof scoreA === 'number' && typeof scoreB === 'number') {
+        return scoreB - scoreA;
+      }
+      return 0;
+    }
   );
 
   // Create rankings with change indicators
   const rankings = sorted.map((report, index) => {
     const rank = index + 1;
+    const score = report.metrics[metric];
     let previousRank: number | undefined;
     let change: number | undefined;
 
@@ -95,7 +156,14 @@ export function calculateRankings(
       const prevReport = previousReport.reports.find(r => r.tld === report.tld);
       if (prevReport) {
         const prevSorted = [...previousReport.reports].sort(
-          (a, b) => b.metrics[metric] - a.metrics[metric]
+          (a, b) => {
+            const scoreA = a.metrics[metric];
+            const scoreB = b.metrics[metric];
+            if (typeof scoreA === 'number' && typeof scoreB === 'number') {
+              return scoreB - scoreA;
+            }
+            return 0;
+          }
         );
         previousRank = prevSorted.findIndex(r => r.tld === report.tld) + 1;
         change = previousRank - rank; // positive = moved up
@@ -106,7 +174,7 @@ export function calculateRankings(
       country: report.country,
       tld: report.tld,
       rank,
-      score: report.metrics[metric],
+      score: typeof score === 'number' ? score : 0,
       previousRank,
       change,
     };
