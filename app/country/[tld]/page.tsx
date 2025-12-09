@@ -98,11 +98,11 @@ export default function CountryAuditPage() {
   const getSeverityIcon = (severity: 'high' | 'medium' | 'low') => {
     switch (severity) {
       case 'high':
-        return <ErrorFilled size={20} style={{ color: '#da1e28' }} />;
+        return <WarningFilled size={20} style={{ color: 'var(--cds-support-error)' }} />;
       case 'medium':
-        return <WarningFilled size={20} style={{ color: '#f1c21b' }} />;
+        return <WarningFilled size={20} style={{ color: 'var(--cds-support-warning)' }} />;
       case 'low':
-        return <WarningFilled size={20} style={{ color: '#0043ce' }} />;
+        return <WarningFilled size={20} style={{ color: 'var(--cds-support-info)' }} />;
     }
   };
 
@@ -146,13 +146,6 @@ export default function CountryAuditPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%' }}>
                   {getSeverityIcon(audit.severity)}
                   <span style={{ flex: 1 }}>{audit.title}</span>
-                  <Tag type={
-                    audit.severity === 'high' ? 'red' :
-                      audit.severity === 'medium' ? 'warm-gray' :
-                        'blue'
-                  } size="sm">
-                    {audit.severity}
-                  </Tag>
                   {audit.displayValue && (
                     <span style={{
                       fontSize: '0.875rem',
@@ -271,17 +264,6 @@ export default function CountryAuditPage() {
                           </pre>
                         </div>
                       )}
-
-                      {/* Estimated Impact */}
-                      <div style={{
-                        marginTop: '1.5rem',
-                        padding: '0.75rem 1rem',
-                        backgroundColor: 'var(--cds-highlight)',
-                        borderRadius: '4px',
-                        fontSize: '0.875rem'
-                      }}>
-                        <strong>📊 Estimated Impact:</strong> {recommendation.estimatedImpact}
-                      </div>
 
                       {/* Resources */}
                       <div style={{
