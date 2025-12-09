@@ -1,16 +1,16 @@
 {
   "month": "2025-12",
-  "generatedAt": "2025-12-09T20:55:57.498Z",
+  "generatedAt": "2025-12-09T22:20:17.546Z",
   "reports": [
     {
       "country": "Albania",
       "tld": "al",
       "url": "https://www.kryeministria.al",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 69,
+        "performance": 72,
         "accessibility": 76,
-        "bestPractices": 92,
+        "bestPractices": 73,
         "seo": 83
       }
     },
@@ -18,7 +18,7 @@
       "country": "Andorra",
       "tld": "ad",
       "url": "https://www.govern.ad/ca/inici",
-      "timestamp": "2025-12-04T22:26:55.212Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
         "performance": 0,
         "accessibility": 0,
@@ -30,9 +30,9 @@
       "country": "Austria",
       "tld": "at",
       "url": "https://www.federal-chancellery.gv.at",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 89,
+        "performance": 85,
         "accessibility": 100,
         "bestPractices": 96,
         "seo": 92
@@ -42,11 +42,11 @@
       "country": "Belarus",
       "tld": "by",
       "url": "https://www.belarus.by",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 96,
+        "performance": 82,
         "accessibility": 68,
-        "bestPractices": 73,
+        "bestPractices": 54,
         "seo": 100
       }
     },
@@ -54,9 +54,9 @@
       "country": "Belgium",
       "tld": "be",
       "url": "https://www.belgium.be",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 90,
+        "performance": 72,
         "accessibility": 97,
         "bestPractices": 96,
         "seo": 92
@@ -66,7 +66,7 @@
       "country": "Bosnia and Herzegovina",
       "tld": "ba",
       "url": "https://www.fbihvlada.gov.ba",
-      "timestamp": "2025-12-04T22:29:20.116Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
         "performance": 0,
         "accessibility": 0,
@@ -78,602 +78,21 @@
       "country": "Bulgaria",
       "tld": "bg",
       "url": "http://www.gov.bg",
-      "timestamp": "2025-12-09T20:55:47.706Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 74,
+        "performance": 69,
         "accessibility": 56,
         "bestPractices": 81,
-        "seo": 77,
-        "audits": {
-          "performance": [
-            {
-              "id": "cache-insight",
-              "title": "Use efficient cache lifetimes",
-              "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
-              "score": 0,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 8,392 KiB",
-              "severity": "high",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "font-display-insight",
-              "title": "Font display",
-              "description": "Consider setting [font-display](https://developer.chrome.com/docs/performance/insights/font-display) to swap or optional to ensure text is consistently visible. swap can be further optimized to mitigate layout shifts with [font metric overrides](https://developer.chrome.com/blog/font-fallbacks).",
-              "score": 0,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 350 ms",
-              "severity": "high",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "image-delivery-insight",
-              "title": "Improve image delivery",
-              "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery)",
-              "score": 0,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 1,333 KiB",
-              "severity": "high",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "lcp-discovery-insight",
-              "title": "LCP request discovery",
-              "description": "[Optimize LCP](https://developer.chrome.com/docs/performance/insights/lcp-discovery) by making the LCP image discoverable from the HTML immediately, and avoiding lazy-loading",
-              "score": 0,
-              "scoreDisplayMode": "numeric",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "network-dependency-tree-insight",
-              "title": "Network dependency tree",
-              "description": "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load.",
-              "score": 0,
-              "scoreDisplayMode": "numeric",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "render-blocking-insight",
-              "title": "Render blocking requests",
-              "description": "Requests are blocking the page's initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
-              "score": 0,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 100 ms",
-              "severity": "high",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "unused-css-rules",
-              "title": "Reduce unused CSS",
-              "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/).",
-              "score": 0,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 19 KiB",
-              "severity": "high",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "redirects",
-              "title": "Avoid multiple page redirects",
-              "description": "Redirects introduce additional delays before the page can be loaded. [Learn how to avoid page redirects](https://developer.chrome.com/docs/lighthouse/performance/redirects/).",
-              "score": 0,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 190 ms",
-              "severity": "high",
-              "weight": 0,
-              "numericValue": 190,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "largest-contentful-paint",
-              "title": "Largest Contentful Paint",
-              "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
-              "score": 0.03,
-              "scoreDisplayMode": "numeric",
-              "displayValue": "6.5 s",
-              "severity": "medium",
-              "weight": 25,
-              "numericValue": 6548.115,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "interactive",
-              "title": "Time to Interactive",
-              "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
-              "score": 0.21,
-              "scoreDisplayMode": "numeric",
-              "displayValue": "6.6 s",
-              "severity": "medium",
-              "weight": 0,
-              "numericValue": 6561.85325,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "first-contentful-paint",
-              "title": "First Contentful Paint",
-              "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
-              "score": 0.98,
-              "scoreDisplayMode": "numeric",
-              "displayValue": "0.7 s",
-              "severity": "low",
-              "weight": 10,
-              "numericValue": 695.6205,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "speed-index",
-              "title": "Speed Index",
-              "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
-              "score": 0.8,
-              "scoreDisplayMode": "numeric",
-              "displayValue": "1.6 s",
-              "severity": "low",
-              "weight": 10,
-              "numericValue": 1588.698177008302,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "cls-culprits-insight",
-              "title": "Layout shift culprits",
-              "description": "Layout shifts occur when elements move absent any user interaction. [Investigate the causes of layout shifts](https://developer.chrome.com/docs/performance/insights/cls-culprit), such as elements being added, removed, or their fonts changing as the page loads.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "document-latency-insight",
-              "title": "Document request latency",
-              "description": "Your first network request is the most important. [Reduce its latency](https://developer.chrome.com/docs/performance/insights/document-latency) by avoiding redirects, ensuring a fast server response, and enabling text compression.",
-              "score": 0.5,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 0 ms",
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "lcp-breakdown-insight",
-              "title": "LCP breakdown",
-              "description": "Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "third-parties-insight",
-              "title": "3rd parties",
-              "description": "3rd party code can significantly impact load performance. [Reduce and defer loading of 3rd party code](https://developer.chrome.com/docs/performance/insights/third-parties) to prioritize your page's content.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "unminified-javascript",
-              "title": "Minify JavaScript",
-              "description": "Minifying JavaScript files can reduce payload sizes and script parse time. [Learn how to minify JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/).",
-              "score": 0.5,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Est savings of 4 KiB",
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "total-byte-weight",
-              "title": "Avoid enormous network payloads",
-              "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
-              "score": 0.5,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": "Total size was 8,413 KiB",
-              "severity": "low",
-              "weight": 0,
-              "numericValue": 8614513,
-              "numericUnit": "byte"
-            },
-            {
-              "id": "unsized-images",
-              "title": "Image elements do not have explicit `width` and `height`",
-              "description": "Set an explicit width and height on image elements to reduce layout shifts and improve CLS. [Learn how to set image dimensions](https://web.dev/articles/optimize-cls#images_without_dimensions)",
-              "score": 0.5,
-              "scoreDisplayMode": "metricSavings",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "network-requests",
-              "title": "Network Requests",
-              "description": "Lists the network requests that were made during page load.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "network-rtt",
-              "title": "Network Round Trip Times",
-              "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": "20 ms",
-              "severity": "low",
-              "weight": 0,
-              "numericValue": 23.598,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "network-server-latency",
-              "title": "Server Backend Latencies",
-              "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more about server response time](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": "230 ms",
-              "severity": "low",
-              "weight": 0,
-              "numericValue": 230.85550000000003,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "main-thread-tasks",
-              "title": "Tasks",
-              "description": "Lists the toplevel main thread tasks that executed during page load.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "diagnostics",
-              "title": "Diagnostics",
-              "description": "Collection of useful page vitals.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "metrics",
-              "title": "Metrics",
-              "description": "Collects all available metrics.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": 6562,
-              "numericUnit": "millisecond"
-            },
-            {
-              "id": "screenshot-thumbnails",
-              "title": "Screenshot Thumbnails",
-              "description": "This is what the load of your site looked like.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "final-screenshot",
-              "title": "Final Screenshot",
-              "description": "The last screenshot captured of the pageload.",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "script-treemap-data",
-              "title": "Script Treemap Data",
-              "description": "Used for treemap app",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "resource-summary",
-              "title": "Resources Summary",
-              "description": "Aggregates all network requests and groups them by type",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "layout-shifts",
-              "title": "Avoid large layout shifts",
-              "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": "2 layout shifts found",
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            }
-          ],
-          "accessibility": [
-            {
-              "id": "image-alt",
-              "title": "Image elements do not have `[alt]` attributes",
-              "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.11/image-alt).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 10,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "meta-viewport",
-              "title": "`[user-scalable=\"no\"]` is used in the `<meta name=\"viewport\">` element or the `[maximum-scale]` attribute is less than 5.",
-              "description": "Disabling zooming is problematic for users with low vision who rely on screen magnification to properly see the contents of a web page. [Learn more about the viewport meta tag](https://dequeuniversity.com/rules/axe/4.11/meta-viewport).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 10,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "color-contrast",
-              "title": "Background and foreground colors do not have a sufficient contrast ratio.",
-              "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.11/color-contrast).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 7,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "link-in-text-block",
-              "title": "Links rely on color to be distinguishable.",
-              "description": "Low-contrast text is difficult or impossible for many users to read. Link text that is discernible improves the experience for users with low vision. [Learn how to make links distinguishable](https://dequeuniversity.com/rules/axe/4.11/link-in-text-block).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 7,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "link-name",
-              "title": "Links do not have a discernible name",
-              "description": "Link text (and alternate text for images, when used as links) that is discernible, unique, and focusable improves the navigation experience for screen reader users. [Learn how to make links accessible](https://dequeuniversity.com/rules/axe/4.11/link-name).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 7,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "heading-order",
-              "title": "Heading elements are not in a sequentially-descending order",
-              "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more about heading order](https://dequeuniversity.com/rules/axe/4.11/heading-order).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 3,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "landmark-one-main",
-              "title": "Document does not have a main landmark.",
-              "description": "One main landmark helps screen reader users navigate a web page. [Learn more about landmarks](https://dequeuniversity.com/rules/axe/4.11/landmark-one-main).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 3,
-              "numericValue": null,
-              "numericUnit": null
-            }
-          ],
-          "bestPractices": [
-            {
-              "id": "is-on-https",
-              "title": "Does not use HTTPS",
-              "description": "All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": "1 insecure request found",
-              "severity": "high",
-              "weight": 5,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "csp-xss",
-              "title": "Ensure CSP is effective against XSS attacks",
-              "description": "A strong Content Security Policy (CSP) significantly reduces the risk of cross-site scripting (XSS) attacks. [Learn how to use a CSP to prevent XSS](https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/)",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "has-hsts",
-              "title": "Use a strong HSTS policy",
-              "description": "Deployment of the HSTS header significantly reduces the risk of downgrading HTTP connections and eavesdropping attacks. A rollout in stages, starting with a low max-age is recommended. [Learn more about using a strong HSTS policy.](https://developer.chrome.com/docs/lighthouse/best-practices/has-hsts)",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "origin-isolation",
-              "title": "Ensure proper origin isolation with COOP",
-              "description": "The Cross-Origin-Opener-Policy (COOP) can be used to isolate the top-level window from other documents such as pop-ups. [Learn more about deploying the COOP header.](https://web.dev/articles/why-coop-coep#coop)",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "clickjacking-mitigation",
-              "title": "Mitigate clickjacking with XFO or CSP",
-              "description": "The `X-Frame-Options` (XFO) header or the `frame-ancestors` directive in the `Content-Security-Policy` (CSP) header control where a page can be embedded. These can mitigate clickjacking attacks by blocking some or all sites from embedding the page. [Learn more about mitigating clickjacking](https://developer.chrome.com/docs/lighthouse/best-practices/clickjacking-mitigation).",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "trusted-types-xss",
-              "title": "Mitigate DOM-based XSS with Trusted Types",
-              "description": "The `require-trusted-types-for` directive in the `Content-Security-Policy` (CSP) header instructs user agents to control the data passed to DOM XSS sink functions. [Learn more about mitigating DOM-based XSS with Trusted Types](https://developer.chrome.com/docs/lighthouse/best-practices/trusted-types-xss).",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "js-libraries",
-              "title": "Detected JavaScript libraries",
-              "description": "All front-end JavaScript libraries detected on the page. [Learn more about this JavaScript library detection diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/js-libraries/).",
-              "score": 1,
-              "scoreDisplayMode": "informative",
-              "displayValue": null,
-              "severity": "low",
-              "weight": 0,
-              "numericValue": null,
-              "numericUnit": null
-            }
-          ],
-          "seo": [
-            {
-              "id": "meta-description",
-              "title": "Document does not have a meta description",
-              "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 1,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "crawlable-anchors",
-              "title": "Links are not crawlable",
-              "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 1,
-              "numericValue": null,
-              "numericUnit": null
-            },
-            {
-              "id": "image-alt",
-              "title": "Image elements do not have `[alt]` attributes",
-              "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.11/image-alt).",
-              "score": 0,
-              "scoreDisplayMode": "binary",
-              "displayValue": null,
-              "severity": "high",
-              "weight": 1,
-              "numericValue": null,
-              "numericUnit": null
-            }
-          ]
-        },
-        "timing": {
-          "firstContentfulPaint": 695.6205,
-          "largestContentfulPaint": 6548.115,
-          "totalBlockingTime": null,
-          "cumulativeLayoutShift": 0.0006472356477833231,
-          "speedIndex": 1588.698177008302
-        }
+        "seo": 77
       }
     },
     {
       "country": "Croatia",
       "tld": "hr",
       "url": "https://vlada.gov.hr",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 93,
+        "performance": 61,
         "accessibility": 73,
         "bestPractices": 100,
         "seo": 75
@@ -682,10 +101,10 @@
     {
       "country": "Czechia",
       "tld": "cz",
-      "url": "https://www.vlada.cz",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "url": "https://vlada.gov.cz/",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 87,
+        "performance": 78,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -695,9 +114,9 @@
       "country": "Denmark",
       "tld": "dk",
       "url": "https://www.stm.dk",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 89,
+        "performance": 79,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 83
@@ -707,10 +126,10 @@
       "country": "Estonia",
       "tld": "ee",
       "url": "https://www.valitsus.ee",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 61,
-        "accessibility": 92,
+        "performance": 70,
+        "accessibility": 91,
         "bestPractices": 73,
         "seo": 92
       }
@@ -719,9 +138,9 @@
       "country": "Finland",
       "tld": "fi",
       "url": "https://valtioneuvosto.fi",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 69,
+        "performance": 84,
         "accessibility": 95,
         "bestPractices": 100,
         "seo": 100
@@ -731,9 +150,9 @@
       "country": "France",
       "tld": "fr",
       "url": "https://www.gouvernement.fr",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 58,
+        "performance": 81,
         "accessibility": 95,
         "bestPractices": 81,
         "seo": 100
@@ -743,9 +162,9 @@
       "country": "Germany",
       "tld": "de",
       "url": "https://www.bundesregierung.de",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 82,
+        "performance": 77,
         "accessibility": 96,
         "bestPractices": 100,
         "seo": 100
@@ -755,9 +174,9 @@
       "country": "Greece",
       "tld": "gr",
       "url": "https://www.mfa.gr",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 99,
+        "performance": 92,
         "accessibility": 93,
         "bestPractices": 92,
         "seo": 92
@@ -767,9 +186,9 @@
       "country": "Hungary",
       "tld": "hu",
       "url": "https://www.kormany.hu",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 68,
+        "performance": 61,
         "accessibility": 96,
         "bestPractices": 100,
         "seo": 100
@@ -779,11 +198,11 @@
       "country": "Iceland",
       "tld": "is",
       "url": "https://www.government.is",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 94,
+        "performance": 85,
         "accessibility": 100,
-        "bestPractices": 100,
+        "bestPractices": 96,
         "seo": 77
       }
     },
@@ -791,9 +210,9 @@
       "country": "Ireland",
       "tld": "ie",
       "url": "https://www.gov.ie",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 88,
+        "performance": 89,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -803,9 +222,9 @@
       "country": "Italy",
       "tld": "it",
       "url": "http://www.governo.it",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 97,
+        "performance": 96,
         "accessibility": 81,
         "bestPractices": 78,
         "seo": 85
@@ -815,9 +234,9 @@
       "country": "Kosovo",
       "tld": "ks",
       "url": "https://rks-gov.net",
-      "timestamp": "2025-12-04T22:30:37.284Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 88,
+        "performance": 81,
         "accessibility": 76,
         "bestPractices": 100,
         "seo": 91
@@ -827,9 +246,9 @@
       "country": "Latvia",
       "tld": "lv",
       "url": "https://www.mk.gov.lv",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 89,
+        "performance": 76,
         "accessibility": 95,
         "bestPractices": 77,
         "seo": 85
@@ -839,9 +258,9 @@
       "country": "Liechtenstein",
       "tld": "li",
       "url": "https://www.regierung.li",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 89,
+        "performance": 92,
         "accessibility": 69,
         "bestPractices": 100,
         "seo": 82
@@ -851,11 +270,11 @@
       "country": "Lithuania",
       "tld": "lt",
       "url": "https://lrv.lt",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
         "performance": 100,
         "accessibility": 83,
-        "bestPractices": 96,
+        "bestPractices": 0,
         "seo": 40
       }
     },
@@ -863,9 +282,9 @@
       "country": "Luxembourg",
       "tld": "lu",
       "url": "https://gouvernement.lu",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 77,
+        "performance": 53,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -875,9 +294,9 @@
       "country": "Macedonia",
       "tld": "mk",
       "url": "https://vlada.mk",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 71,
+        "performance": 66,
         "accessibility": 94,
         "bestPractices": 100,
         "seo": 100
@@ -887,21 +306,21 @@
       "country": "Malta",
       "tld": "mt",
       "url": "https://www.gov.mt",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 100,
-        "accessibility": 83,
-        "bestPractices": 0,
-        "seo": 40
+        "performance": 52,
+        "accessibility": 97,
+        "bestPractices": 77,
+        "seo": 85
       }
     },
     {
       "country": "Moldova",
       "tld": "md",
       "url": "https://gov.md",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 46,
+        "performance": 54,
         "accessibility": 87,
         "bestPractices": 100,
         "seo": 92
@@ -911,9 +330,9 @@
       "country": "Monaco",
       "tld": "mc",
       "url": "https://www.gouv.mc",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 95,
+        "performance": 78,
         "accessibility": 83,
         "bestPractices": 100,
         "seo": 92
@@ -923,9 +342,9 @@
       "country": "Montenegro",
       "tld": "me",
       "url": "https://www.gov.me",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 83,
+        "performance": 70,
         "accessibility": 96,
         "bestPractices": 100,
         "seo": 100
@@ -935,9 +354,9 @@
       "country": "Netherlands",
       "tld": "nl",
       "url": "https://www.government.nl",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 96,
+        "performance": 88,
         "accessibility": 96,
         "bestPractices": 100,
         "seo": 92
@@ -947,9 +366,9 @@
       "country": "Norway",
       "tld": "no",
       "url": "https://www.regjeringen.no",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 99,
+        "performance": 86,
         "accessibility": 100,
         "bestPractices": 81,
         "seo": 100
@@ -959,9 +378,9 @@
       "country": "Poland",
       "tld": "pl",
       "url": "https://www.polska.pl",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 94,
+        "performance": 93,
         "accessibility": 86,
         "bestPractices": 88,
         "seo": 75
@@ -971,9 +390,9 @@
       "country": "Portugal",
       "tld": "pt",
       "url": "https://www.portugal.gov.pt",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 47,
+        "performance": 46,
         "accessibility": 80,
         "bestPractices": 77,
         "seo": 92
@@ -983,23 +402,23 @@
       "country": "Romania",
       "tld": "ro",
       "url": "https://www.gov.ro/",
-      "timestamp": "2025-12-04T22:34:29.684Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 63,
-        "accessibility": 38,
-        "bestPractices": 88,
-        "seo": 75
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
       }
     },
     {
       "country": "Russia",
       "tld": "ru",
       "url": "http://government.ru/en",
-      "timestamp": "2025-12-04T22:19:40.320Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 85,
+        "performance": 78,
         "accessibility": 90,
-        "bestPractices": 74,
+        "bestPractices": 56,
         "seo": 91
       }
     },
@@ -1007,9 +426,9 @@
       "country": "San Marino",
       "tld": "sm",
       "url": "http://www.sanmarino.sm",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 90,
+        "performance": 44,
         "accessibility": 96,
         "bestPractices": 81,
         "seo": 91
@@ -1019,9 +438,9 @@
       "country": "Serbia",
       "tld": "rs",
       "url": "https://www.srbija.gov.rs",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 81,
+        "performance": 55,
         "accessibility": 82,
         "bestPractices": 81,
         "seo": 83
@@ -1031,9 +450,9 @@
       "country": "Slovakia",
       "tld": "sk",
       "url": "https://www.vlada.gov.sk",
-      "timestamp": "2025-12-04T22:31:51.753Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 0,
+        "performance": 99,
         "accessibility": 96,
         "bestPractices": 100,
         "seo": 91
@@ -1043,9 +462,9 @@
       "country": "Slovenia",
       "tld": "si",
       "url": "http://www.vlada.si",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 92,
+        "performance": 90,
         "accessibility": 96,
         "bestPractices": 81,
         "seo": 92
@@ -1055,9 +474,9 @@
       "country": "Spain",
       "tld": "es",
       "url": "http://www.lamoncloa.gob.es",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 58,
+        "performance": 42,
         "accessibility": 100,
         "bestPractices": 81,
         "seo": 100
@@ -1067,9 +486,9 @@
       "country": "Sweden",
       "tld": "se",
       "url": "https://www.government.se",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 94,
+        "performance": 89,
         "accessibility": 100,
         "bestPractices": 58,
         "seo": 92
@@ -1079,9 +498,9 @@
       "country": "Switzerland",
       "tld": "ch",
       "url": "https://www.admin.ch",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 58,
+        "performance": 72,
         "accessibility": 78,
         "bestPractices": 96,
         "seo": 82
@@ -1091,9 +510,9 @@
       "country": "Turkey",
       "tld": "tr",
       "url": "https://www.turkiye.gov.tr",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 96,
+        "performance": 84,
         "accessibility": 93,
         "bestPractices": 100,
         "seo": 100
@@ -1103,19 +522,19 @@
       "country": "Ukraine",
       "tld": "ua",
       "url": "https://www.kmu.gov.ua",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
-        "performance": 74,
-        "accessibility": 97,
-        "bestPractices": 92,
-        "seo": 92
+        "performance": 0,
+        "accessibility": 0,
+        "bestPractices": 0,
+        "seo": 0
       }
     },
     {
       "country": "United Kingdom",
       "tld": "uk",
       "url": "https://www.gov.uk",
-      "timestamp": "2025-12-04T21:47:03.106Z",
+      "timestamp": "2025-12-09T22:01:04.509Z",
       "metrics": {
         "performance": 100,
         "accessibility": 100,

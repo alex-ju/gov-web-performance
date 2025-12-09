@@ -1,13 +1,13 @@
 {
-  "country": "Bulgaria",
-  "tld": "bg",
-  "url": "http://www.gov.bg",
+  "country": "Luxembourg",
+  "tld": "lu",
+  "url": "https://gouvernement.lu",
   "timestamp": "2025-12-09T22:01:04.509Z",
   "metrics": {
-    "performance": 69,
-    "accessibility": 56,
-    "bestPractices": 81,
-    "seo": 77,
+    "performance": 53,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
     "audits": {
       "performance": [
         {
@@ -16,7 +16,31 @@
           "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
           "score": 0,
           "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 8,392 KiB",
+          "displayValue": "Est savings of 4,351 KiB",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "cls-culprits-insight",
+          "title": "Layout shift culprits",
+          "description": "Layout shifts occur when elements move absent any user interaction. [Investigate the causes of layout shifts](https://developer.chrome.com/docs/performance/insights/cls-culprit), such as elements being added, removed, or their fonts changing as the page loads.",
+          "score": 0,
+          "scoreDisplayMode": "numeric",
+          "displayValue": null,
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "description": "Your first network request is the most important. [Reduce its latency](https://developer.chrome.com/docs/performance/insights/document-latency) by avoiding redirects, ensuring a fast server response, and enabling text compression.",
+          "score": 0,
+          "scoreDisplayMode": "metricSavings",
+          "displayValue": "Est savings of 96 KiB",
           "severity": "high",
           "weight": 0,
           "numericValue": null,
@@ -28,7 +52,7 @@
           "description": "Consider setting [font-display](https://developer.chrome.com/docs/performance/insights/font-display) to swap or optional to ensure text is consistently visible. swap can be further optimized to mitigate layout shifts with [font metric overrides](https://developer.chrome.com/blog/font-fallbacks).",
           "score": 0,
           "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 630 ms",
+          "displayValue": "Est savings of 390 ms",
           "severity": "high",
           "weight": 0,
           "numericValue": null,
@@ -40,7 +64,19 @@
           "description": "Reducing the download time of images can improve the perceived load time of the page and LCP. [Learn more about optimizing image size](https://developer.chrome.com/docs/performance/insights/image-delivery)",
           "score": 0,
           "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 1,333 KiB",
+          "displayValue": "Est savings of 2,780 KiB",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "lcp-breakdown-insight",
+          "title": "LCP breakdown",
+          "description": "Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.",
+          "score": 0,
+          "scoreDisplayMode": "numeric",
+          "displayValue": null,
           "severity": "high",
           "weight": 0,
           "numericValue": null,
@@ -53,6 +89,18 @@
           "score": 0,
           "scoreDisplayMode": "numeric",
           "displayValue": null,
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "modern-http-insight",
+          "title": "Modern HTTP",
+          "description": "HTTP/2 and HTTP/3 offer many benefits over HTTP/1.1, such as multiplexing. [Learn more about using modern HTTP](https://developer.chrome.com/docs/performance/insights/modern-http).",
+          "score": 0,
+          "scoreDisplayMode": "metricSavings",
+          "displayValue": "Est savings of 380 ms",
           "severity": "high",
           "weight": 0,
           "numericValue": null,
@@ -76,7 +124,7 @@
           "description": "Requests are blocking the page's initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.",
           "score": 0,
           "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 280 ms",
+          "displayValue": "Est savings of 490 ms",
           "severity": "high",
           "weight": 0,
           "numericValue": null,
@@ -88,11 +136,35 @@
           "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/).",
           "score": 0,
           "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 19 KiB",
+          "displayValue": "Est savings of 282 KiB",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": 220,
+          "numericUnit": "millisecond"
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/).",
+          "score": 0,
+          "scoreDisplayMode": "metricSavings",
+          "displayValue": "Est savings of 90 KiB",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": 40,
+          "numericUnit": "millisecond"
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "description": "Many navigations are performed by going back to a previous page, or forwards again. The back/forward cache (bfcache) can speed up these return navigations. [Learn more about the bfcache](https://developer.chrome.com/docs/lighthouse/performance/bf-cache/)",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": "3 failure reasons",
           "severity": "high",
           "weight": 0,
           "numericValue": null,
-          "numericUnit": "millisecond"
+          "numericUnit": null
         },
         {
           "id": "redirects",
@@ -100,106 +172,94 @@
           "description": "Redirects introduce additional delays before the page can be loaded. [Learn how to avoid page redirects](https://developer.chrome.com/docs/lighthouse/performance/redirects/).",
           "score": 0,
           "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 190 ms",
+          "displayValue": "Est savings of 230 ms",
           "severity": "high",
           "weight": 0,
-          "numericValue": 190,
+          "numericValue": 225.59199999999998,
           "numericUnit": "millisecond"
+        },
+        {
+          "id": "layout-shifts",
+          "title": "Avoid large layout shifts",
+          "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)",
+          "score": 0,
+          "scoreDisplayMode": "metricSavings",
+          "displayValue": "3 layout shifts found",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
         },
         {
           "id": "largest-contentful-paint",
           "title": "Largest Contentful Paint",
           "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
-          "score": 0.02,
+          "score": 0.24,
           "scoreDisplayMode": "numeric",
-          "displayValue": "7.2 s",
+          "displayValue": "3.5 s",
           "severity": "medium",
           "weight": 25,
-          "numericValue": 7187.218999999999,
+          "numericValue": 3464.2145,
           "numericUnit": "millisecond"
         },
         {
-          "id": "interactive",
-          "title": "Time to Interactive",
-          "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
-          "score": 0.15,
+          "id": "cumulative-layout-shift",
+          "title": "Cumulative Layout Shift",
+          "description": "Cumulative Layout Shift measures the movement of visible elements within the viewport. [Learn more about the Cumulative Layout Shift metric](https://web.dev/articles/cls).",
+          "score": 0.09,
           "scoreDisplayMode": "numeric",
-          "displayValue": "7.2 s",
+          "displayValue": "0.636",
           "severity": "medium",
-          "weight": 0,
-          "numericValue": 7223.98275,
-          "numericUnit": "millisecond"
+          "weight": 25,
+          "numericValue": 0.635910655567255,
+          "numericUnit": "unitless"
         },
         {
           "id": "first-contentful-paint",
           "title": "First Contentful Paint",
           "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more about the First Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint/).",
-          "score": 0.82,
+          "score": 0.92,
           "scoreDisplayMode": "numeric",
-          "displayValue": "1.1 s",
+          "displayValue": "0.9 s",
           "severity": "low",
           "weight": 10,
-          "numericValue": 1084.4365,
+          "numericValue": 876.776,
           "numericUnit": "millisecond"
         },
         {
           "id": "speed-index",
           "title": "Speed Index",
           "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more about the Speed Index metric](https://developer.chrome.com/docs/lighthouse/performance/speed-index/).",
-          "score": 0.5,
+          "score": 0.59,
           "scoreDisplayMode": "numeric",
-          "displayValue": "2.3 s",
+          "displayValue": "2.1 s",
           "severity": "low",
           "weight": 10,
-          "numericValue": 2289.242049246871,
+          "numericValue": 2071.546676469208,
           "numericUnit": "millisecond"
         },
         {
-          "id": "cls-culprits-insight",
-          "title": "Layout shift culprits",
-          "description": "Layout shifts occur when elements move absent any user interaction. [Investigate the causes of layout shifts](https://developer.chrome.com/docs/performance/insights/cls-culprit), such as elements being added, removed, or their fonts changing as the page loads.",
+          "id": "dom-size-insight",
+          "title": "Optimize DOM size",
+          "description": "A large DOM can increase the duration of style calculations and layout reflows, impacting page responsiveness. A large DOM will also increase memory usage. [Learn how to avoid an excessive DOM size](https://developer.chrome.com/docs/performance/insights/dom-size).",
           "score": 1,
           "scoreDisplayMode": "informative",
           "displayValue": null,
           "severity": "low",
           "weight": 0,
-          "numericValue": null,
-          "numericUnit": null
+          "numericValue": 1098,
+          "numericUnit": "element"
         },
         {
-          "id": "document-latency-insight",
-          "title": "Document request latency",
-          "description": "Your first network request is the most important. [Reduce its latency](https://developer.chrome.com/docs/performance/insights/document-latency) by avoiding redirects, ensuring a fast server response, and enabling text compression.",
-          "score": 0.5,
-          "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 0 ms",
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
+          "score": 0.67,
+          "scoreDisplayMode": "numeric",
+          "displayValue": "3.6 s",
           "severity": "low",
           "weight": 0,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "lcp-breakdown-insight",
-          "title": "LCP breakdown",
-          "description": "Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.",
-          "score": 1,
-          "scoreDisplayMode": "informative",
-          "displayValue": null,
-          "severity": "low",
-          "weight": 0,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "unminified-javascript",
-          "title": "Minify JavaScript",
-          "description": "Minifying JavaScript files can reduce payload sizes and script parse time. [Learn how to minify JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unminified-javascript/).",
-          "score": 0.5,
-          "scoreDisplayMode": "metricSavings",
-          "displayValue": "Est savings of 4 KiB",
-          "severity": "low",
-          "weight": 0,
-          "numericValue": null,
+          "numericValue": 3627.7074500000003,
           "numericUnit": "millisecond"
         },
         {
@@ -208,23 +268,11 @@
           "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
           "score": 0.5,
           "scoreDisplayMode": "metricSavings",
-          "displayValue": "Total size was 8,413 KiB",
+          "displayValue": "Total size was 5,160 KiB",
           "severity": "low",
           "weight": 0,
-          "numericValue": 8614866,
+          "numericValue": 5283672,
           "numericUnit": "byte"
-        },
-        {
-          "id": "long-tasks",
-          "title": "Avoid long main-thread tasks",
-          "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)",
-          "score": 1,
-          "scoreDisplayMode": "informative",
-          "displayValue": "1 long task found",
-          "severity": "low",
-          "weight": 0,
-          "numericValue": null,
-          "numericUnit": null
         },
         {
           "id": "unsized-images",
@@ -256,10 +304,10 @@
           "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
           "score": 1,
           "scoreDisplayMode": "informative",
-          "displayValue": "110 ms",
+          "displayValue": "120 ms",
           "severity": "low",
           "weight": 0,
-          "numericValue": 109.505,
+          "numericValue": 115.66999999999996,
           "numericUnit": "millisecond"
         },
         {
@@ -268,10 +316,10 @@
           "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more about server response time](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
           "score": 1,
           "scoreDisplayMode": "informative",
-          "displayValue": "160 ms",
+          "displayValue": "30 ms",
           "severity": "low",
           "weight": 0,
-          "numericValue": 159.1615,
+          "numericValue": 33.13699999999997,
           "numericUnit": "millisecond"
         },
         {
@@ -307,7 +355,7 @@
           "displayValue": null,
           "severity": "low",
           "weight": 0,
-          "numericValue": 7224,
+          "numericValue": 3628,
           "numericUnit": "millisecond"
         },
         {
@@ -357,119 +405,10 @@
           "weight": 0,
           "numericValue": null,
           "numericUnit": null
-        },
-        {
-          "id": "layout-shifts",
-          "title": "Avoid large layout shifts",
-          "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)",
-          "score": 1,
-          "scoreDisplayMode": "informative",
-          "displayValue": "2 layout shifts found",
-          "severity": "low",
-          "weight": 0,
-          "numericValue": null,
-          "numericUnit": null
         }
       ],
-      "accessibility": [
-        {
-          "id": "image-alt",
-          "title": "Image elements do not have `[alt]` attributes",
-          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.11/image-alt).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 10,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "meta-viewport",
-          "title": "`[user-scalable=\"no\"]` is used in the `<meta name=\"viewport\">` element or the `[maximum-scale]` attribute is less than 5.",
-          "description": "Disabling zooming is problematic for users with low vision who rely on screen magnification to properly see the contents of a web page. [Learn more about the viewport meta tag](https://dequeuniversity.com/rules/axe/4.11/meta-viewport).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 10,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "color-contrast",
-          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
-          "description": "Low-contrast text is difficult or impossible for many users to read. [Learn how to provide sufficient color contrast](https://dequeuniversity.com/rules/axe/4.11/color-contrast).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 7,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "link-in-text-block",
-          "title": "Links rely on color to be distinguishable.",
-          "description": "Low-contrast text is difficult or impossible for many users to read. Link text that is discernible improves the experience for users with low vision. [Learn how to make links distinguishable](https://dequeuniversity.com/rules/axe/4.11/link-in-text-block).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 7,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "link-name",
-          "title": "Links do not have a discernible name",
-          "description": "Link text (and alternate text for images, when used as links) that is discernible, unique, and focusable improves the navigation experience for screen reader users. [Learn how to make links accessible](https://dequeuniversity.com/rules/axe/4.11/link-name).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 7,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "heading-order",
-          "title": "Heading elements are not in a sequentially-descending order",
-          "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more about heading order](https://dequeuniversity.com/rules/axe/4.11/heading-order).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 3,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "landmark-one-main",
-          "title": "Document does not have a main landmark.",
-          "description": "One main landmark helps screen reader users navigate a web page. [Learn more about landmarks](https://dequeuniversity.com/rules/axe/4.11/landmark-one-main).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 3,
-          "numericValue": null,
-          "numericUnit": null
-        }
-      ],
+      "accessibility": [],
       "bestPractices": [
-        {
-          "id": "is-on-https",
-          "title": "Does not use HTTPS",
-          "description": "All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": "1 insecure request found",
-          "severity": "high",
-          "weight": 5,
-          "numericValue": null,
-          "numericUnit": null
-        },
         {
           "id": "csp-xss",
           "title": "Ensure CSP is effective against XSS attacks",
@@ -483,33 +422,9 @@
           "numericUnit": null
         },
         {
-          "id": "has-hsts",
-          "title": "Use a strong HSTS policy",
-          "description": "Deployment of the HSTS header significantly reduces the risk of downgrading HTTP connections and eavesdropping attacks. A rollout in stages, starting with a low max-age is recommended. [Learn more about using a strong HSTS policy.](https://developer.chrome.com/docs/lighthouse/best-practices/has-hsts)",
-          "score": 1,
-          "scoreDisplayMode": "informative",
-          "displayValue": null,
-          "severity": "low",
-          "weight": 0,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
           "id": "origin-isolation",
           "title": "Ensure proper origin isolation with COOP",
           "description": "The Cross-Origin-Opener-Policy (COOP) can be used to isolate the top-level window from other documents such as pop-ups. [Learn more about deploying the COOP header.](https://web.dev/articles/why-coop-coep#coop)",
-          "score": 1,
-          "scoreDisplayMode": "informative",
-          "displayValue": null,
-          "severity": "low",
-          "weight": 0,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "clickjacking-mitigation",
-          "title": "Mitigate clickjacking with XFO or CSP",
-          "description": "The `X-Frame-Options` (XFO) header or the `frame-ancestors` directive in the `Content-Security-Policy` (CSP) header control where a page can be embedded. These can mitigate clickjacking attacks by blocking some or all sites from embedding the page. [Learn more about mitigating clickjacking](https://developer.chrome.com/docs/lighthouse/best-practices/clickjacking-mitigation).",
           "score": 1,
           "scoreDisplayMode": "informative",
           "displayValue": null,
@@ -543,51 +458,14 @@
           "numericUnit": null
         }
       ],
-      "seo": [
-        {
-          "id": "meta-description",
-          "title": "Document does not have a meta description",
-          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 1,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "crawlable-anchors",
-          "title": "Links are not crawlable",
-          "description": "Search engines may use `href` attributes on links to crawl websites. Ensure that the `href` attribute of anchor elements links to an appropriate destination, so more pages of the site can be discovered. [Learn how to make links crawlable](https://support.google.com/webmasters/answer/9112205)",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 1,
-          "numericValue": null,
-          "numericUnit": null
-        },
-        {
-          "id": "image-alt",
-          "title": "Image elements do not have `[alt]` attributes",
-          "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more about the `alt` attribute](https://dequeuniversity.com/rules/axe/4.11/image-alt).",
-          "score": 0,
-          "scoreDisplayMode": "binary",
-          "displayValue": null,
-          "severity": "high",
-          "weight": 1,
-          "numericValue": null,
-          "numericUnit": null
-        }
-      ]
+      "seo": []
     },
     "timing": {
-      "firstContentfulPaint": 1084.4365,
-      "largestContentfulPaint": 7187.218999999999,
+      "firstContentfulPaint": 876.776,
+      "largestContentfulPaint": 3464.2145,
       "totalBlockingTime": null,
-      "cumulativeLayoutShift": 0.0005064259898948929,
-      "speedIndex": 2289.242049246871
+      "cumulativeLayoutShift": 0.635910655567255,
+      "speedIndex": 2071.546676469208
     }
   }
 }
