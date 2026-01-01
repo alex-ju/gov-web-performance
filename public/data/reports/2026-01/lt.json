@@ -1,0 +1,377 @@
+{
+  "country": "Lithuania",
+  "tld": "lt",
+  "url": "https://lrv.lt",
+  "timestamp": "2026-01-01T01:48:26.776Z",
+  "metrics": {
+    "performance": 100,
+    "accessibility": 83,
+    "bestPractices": 96,
+    "seo": 40,
+    "audits": {
+      "performance": [
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "description": "Your first network request is the most important. [Reduce its latency](https://developer.chrome.com/docs/performance/insights/document-latency) by avoiding redirects, ensuring a fast server response, and enabling text compression.",
+          "score": 0,
+          "scoreDisplayMode": "metricSavings",
+          "displayValue": "Est savings of 190 ms",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "description": "[Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load.",
+          "score": 0,
+          "scoreDisplayMode": "numeric",
+          "displayValue": null,
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "bf-cache",
+          "title": "Page prevented back/forward cache restoration",
+          "description": "Many navigations are performed by going back to a previous page, or forwards again. The back/forward cache (bfcache) can speed up these return navigations. [Learn more about the bfcache](https://developer.chrome.com/docs/lighthouse/performance/bf-cache/)",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": "3 failure reasons",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "redirects",
+          "title": "Avoid multiple page redirects",
+          "description": "Redirects introduce additional delays before the page can be loaded. [Learn how to avoid page redirects](https://developer.chrome.com/docs/lighthouse/performance/redirects/).",
+          "score": 0,
+          "scoreDisplayMode": "metricSavings",
+          "displayValue": "Est savings of 220 ms",
+          "severity": "high",
+          "weight": 0,
+          "numericValue": 215.477,
+          "numericUnit": "millisecond"
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "description": "Largest Contentful Paint marks the time at which the largest text or image is painted. [Learn more about the Largest Contentful Paint metric](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint/)",
+          "score": 0.98,
+          "scoreDisplayMode": "numeric",
+          "displayValue": "0.8 s",
+          "severity": "low",
+          "weight": 25,
+          "numericValue": 759.9639999999999,
+          "numericUnit": "millisecond"
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).",
+          "score": 0.5,
+          "scoreDisplayMode": "metricSavings",
+          "displayValue": "Est savings of 3 KiB",
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "cls-culprits-insight",
+          "title": "Layout shift culprits",
+          "description": "Layout shifts occur when elements move absent any user interaction. [Investigate the causes of layout shifts](https://developer.chrome.com/docs/performance/insights/cls-culprit), such as elements being added, removed, or their fonts changing as the page loads.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "lcp-breakdown-insight",
+          "title": "LCP breakdown",
+          "description": "Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "long-tasks",
+          "title": "Avoid long main-thread tasks",
+          "description": "Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. [Learn how to avoid long main-thread tasks](https://web.dev/articles/optimize-long-tasks)",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": "2 long tasks found",
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "network-requests",
+          "title": "Network Requests",
+          "description": "Lists the network requests that were made during page load.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "network-rtt",
+          "title": "Network Round Trip Times",
+          "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more about the Round Trip Time](https://hpbn.co/primer-on-latency-and-bandwidth/).",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": "10 ms",
+          "severity": "low",
+          "weight": 0,
+          "numericValue": 13.36,
+          "numericUnit": "millisecond"
+        },
+        {
+          "id": "network-server-latency",
+          "title": "Server Backend Latencies",
+          "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more about server response time](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": "20 ms",
+          "severity": "low",
+          "weight": 0,
+          "numericValue": 15.477000000000002,
+          "numericUnit": "millisecond"
+        },
+        {
+          "id": "main-thread-tasks",
+          "title": "Tasks",
+          "description": "Lists the toplevel main thread tasks that executed during page load.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "diagnostics",
+          "title": "Diagnostics",
+          "description": "Collection of useful page vitals.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "metrics",
+          "title": "Metrics",
+          "description": "Collects all available metrics.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": 760,
+          "numericUnit": "millisecond"
+        },
+        {
+          "id": "screenshot-thumbnails",
+          "title": "Screenshot Thumbnails",
+          "description": "This is what the load of your site looked like.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "final-screenshot",
+          "title": "Final Screenshot",
+          "description": "The last screenshot captured of the pageload.",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "script-treemap-data",
+          "title": "Script Treemap Data",
+          "description": "Used for treemap app",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "resource-summary",
+          "title": "Resources Summary",
+          "description": "Aggregates all network requests and groups them by type",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "layout-shifts",
+          "title": "Avoid large layout shifts",
+          "description": "These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to [windowing](https://web.dev/articles/cls#what_is_cls). [Learn how to improve CLS](https://web.dev/articles/optimize-cls)",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": "3 layout shifts found",
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        }
+      ],
+      "accessibility": [
+        {
+          "id": "meta-refresh",
+          "title": "The document uses `<meta http-equiv=\"refresh\">`",
+          "description": "Users do not expect a page to refresh automatically, and doing so will move focus back to the top of the page. This may create a frustrating or confusing experience. [Learn more about the refresh meta tag](https://dequeuniversity.com/rules/axe/4.11/meta-refresh).",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": null,
+          "severity": "high",
+          "weight": 10,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "link-in-text-block",
+          "title": "Links rely on color to be distinguishable.",
+          "description": "Low-contrast text is difficult or impossible for many users to read. Link text that is discernible improves the experience for users with low vision. [Learn how to make links distinguishable](https://dequeuniversity.com/rules/axe/4.11/link-in-text-block).",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": null,
+          "severity": "high",
+          "weight": 7,
+          "numericValue": null,
+          "numericUnit": null
+        }
+      ],
+      "bestPractices": [
+        {
+          "id": "errors-in-console",
+          "title": "Browser errors were logged to the console",
+          "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns. [Learn more about this errors in console diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/errors-in-console/)",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": null,
+          "severity": "high",
+          "weight": 1,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "csp-xss",
+          "title": "Ensure CSP is effective against XSS attacks",
+          "description": "A strong Content Security Policy (CSP) significantly reduces the risk of cross-site scripting (XSS) attacks. [Learn how to use a CSP to prevent XSS](https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/)",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "has-hsts",
+          "title": "Use a strong HSTS policy",
+          "description": "Deployment of the HSTS header significantly reduces the risk of downgrading HTTP connections and eavesdropping attacks. A rollout in stages, starting with a low max-age is recommended. [Learn more about using a strong HSTS policy.](https://developer.chrome.com/docs/lighthouse/best-practices/has-hsts)",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "trusted-types-xss",
+          "title": "Mitigate DOM-based XSS with Trusted Types",
+          "description": "The `require-trusted-types-for` directive in the `Content-Security-Policy` (CSP) header instructs user agents to control the data passed to DOM XSS sink functions. [Learn more about mitigating DOM-based XSS with Trusted Types](https://developer.chrome.com/docs/lighthouse/best-practices/trusted-types-xss).",
+          "score": 1,
+          "scoreDisplayMode": "informative",
+          "displayValue": null,
+          "severity": "low",
+          "weight": 0,
+          "numericValue": null,
+          "numericUnit": null
+        }
+      ],
+      "seo": [
+        {
+          "id": "is-crawlable",
+          "title": "Page is blocked from indexing",
+          "description": "Search engines are unable to include your pages in search results if they don't have permission to crawl them. [Learn more about crawler directives](https://developer.chrome.com/docs/lighthouse/seo/is-crawlable/).",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": null,
+          "severity": "high",
+          "weight": 4.043478260869565,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "meta-description",
+          "title": "Document does not have a meta description",
+          "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more about the meta description](https://developer.chrome.com/docs/lighthouse/seo/meta-description/).",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": null,
+          "severity": "high",
+          "weight": 1,
+          "numericValue": null,
+          "numericUnit": null
+        },
+        {
+          "id": "http-status-code",
+          "title": "Page has unsuccessful HTTP status code",
+          "description": "Pages with unsuccessful HTTP status codes may not be indexed properly. [Learn more about HTTP status codes](https://developer.chrome.com/docs/lighthouse/seo/http-status-code/).",
+          "score": 0,
+          "scoreDisplayMode": "binary",
+          "displayValue": "403",
+          "severity": "high",
+          "weight": 1,
+          "numericValue": null,
+          "numericUnit": null
+        }
+      ]
+    },
+    "timing": {
+      "firstContentfulPaint": 272.954,
+      "largestContentfulPaint": 759.9639999999999,
+      "totalBlockingTime": 7,
+      "cumulativeLayoutShift": 0.0021379283775501273,
+      "speedIndex": 416.0935285833426
+    }
+  }
+}

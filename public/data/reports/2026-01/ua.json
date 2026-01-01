@@ -1,0 +1,25 @@
+{
+  "country": "Ukraine",
+  "tld": "ua",
+  "url": "https://www.kmu.gov.ua",
+  "timestamp": "2026-01-01T01:48:26.776Z",
+  "metrics": {
+    "performance": 0,
+    "accessibility": 0,
+    "bestPractices": 0,
+    "seo": 0,
+    "audits": {
+      "performance": [],
+      "accessibility": [],
+      "bestPractices": [],
+      "seo": []
+    },
+    "timing": {
+      "firstContentfulPaint": null,
+      "largestContentfulPaint": null,
+      "totalBlockingTime": null,
+      "cumulativeLayoutShift": null,
+      "speedIndex": null
+    }
+  }
+}
