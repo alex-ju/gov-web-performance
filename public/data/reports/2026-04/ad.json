@@ -1,0 +1,25 @@
+{
+  "country": "Andorra",
+  "tld": "ad",
+  "url": "https://www.govern.ad/ca/inici",
+  "timestamp": "2026-04-01T02:30:04.417Z",
+  "metrics": {
+    "performance": 0,
+    "accessibility": 0,
+    "bestPractices": 0,
+    "seo": 0,
+    "audits": {
+      "performance": [],
+      "accessibility": [],
+      "bestPractices": [],
+      "seo": []
+    },
+    "timing": {
+      "firstContentfulPaint": null,
+      "largestContentfulPaint": null,
+      "totalBlockingTime": null,
+      "cumulativeLayoutShift": null,
+      "speedIndex": null
+    }
+  }
+}
