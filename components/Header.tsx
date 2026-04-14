@@ -16,7 +16,6 @@ export default function Header() {
   return (
     <CarbonHeader aria-label="Government Web Performance">
       <HeaderName href={`${BASE_PATH}/`} prefix="">
-        <Dashboard size={20} style={{ marginRight: '0.5rem' }} />
         Gov Web Performance
       </HeaderName>
       <HeaderNavigation aria-label="Main navigation">
