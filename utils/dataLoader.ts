@@ -131,6 +131,11 @@ function getMetricScore(report: CountryReport, metric: RankingMetric): number {
   return typeof score === 'number' ? score : 0;
 }
 
+function hasValidMetricScore(report: CountryReport, metric: RankingMetric): boolean {
+  // A score of 0 currently indicates failed/invalid reporting and should not be ranked.
+  return getMetricScore(report, metric) > 0;
+}
+
 /**
  * Sort reports by score desc and assign dense ranks (1,1,2...).
  */
@@ -142,6 +147,13 @@ function buildRankMap(
   rankByTld: Map<string, number>;
 } {
   const sorted = [...reports].sort((a, b) => {
+    const isAvailableA = hasValidMetricScore(a, metric);
+    const isAvailableB = hasValidMetricScore(b, metric);
+
+    if (isAvailableA !== isAvailableB) {
+      return isAvailableA ? -1 : 1;
+    }
+
     const scoreDiff = getMetricScore(b, metric) - getMetricScore(a, metric);
     if (scoreDiff !== 0) return scoreDiff;
 
@@ -154,6 +166,10 @@ function buildRankMap(
   let currentRank = 0;
 
   sorted.forEach((report) => {
+    if (!hasValidMetricScore(report, metric)) {
+      return;
+    }
+
     const score = getMetricScore(report, metric);
     if (previousScore === undefined || score !== previousScore) {
       currentRank += 1;
@@ -180,9 +196,11 @@ export function calculateRankings(
 
   // Create rankings with change indicators
   const rankings = sorted.map((report) => {
-    const rank = rankByTld.get(report.tld) ?? 0;
+    const rank = rankByTld.get(report.tld);
     const previousRank = previousRankByTld?.get(report.tld);
-    const change = previousRank !== undefined ? previousRank - rank : undefined; // positive = moved up
+    const change = rank !== undefined && previousRank !== undefined
+      ? previousRank - rank
+      : undefined; // positive = moved up
 
     return {
       country: report.country,

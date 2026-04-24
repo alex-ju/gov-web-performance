@@ -66,7 +66,7 @@ export interface MonthlyReport {
 export interface CountryRanking {
   country: string;
   tld: string;
-  rank: number;
+  rank?: number;
   score: number;
   previousRank?: number;
   change?: number; // positive = moved up, negative = moved down

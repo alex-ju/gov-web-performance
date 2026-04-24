@@ -296,6 +296,13 @@ export default function CountryAuditClient({ tld }: { tld: string }) {
 
   const metrics = countryReport.metrics;
   const hasAuditData = metrics.audits !== undefined;
+  const hasMeaningfulScores = [
+    metrics.performance,
+    metrics.accessibility,
+    metrics.bestPractices,
+    metrics.seo,
+  ].some((score) => score > 0);
+  const canShowDetailedAuditResults = hasAuditData && hasMeaningfulScores;
 
   return (
     <>
@@ -440,7 +447,7 @@ export default function CountryAuditClient({ tld }: { tld: string }) {
           )}
 
           {/* Detailed audit results */}
-          {hasAuditData ? (
+          {canShowDetailedAuditResults ? (
             <>
               <Column lg={16} md={8} sm={4}>
                 <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginTop: '3rem', marginBottom: '1.5rem' }}>
@@ -499,8 +506,9 @@ export default function CountryAuditClient({ tld }: { tld: string }) {
                   Detailed audit data not available
                 </p>
                 <p style={{ color: 'var(--cds-text-secondary)', marginTop: '0.5rem' }}>
-                  This report was generated before detailed audit tracking was enabled.
-                  New audits will include detailed recommendations.
+                  {hasMeaningfulScores
+                    ? 'This report was generated before detailed audit tracking was enabled. New audits will include detailed recommendations.'
+                    : 'We were not able to fetch meaningful data from this website for this run, so detailed reports and recommendations are not available.'}
                 </p>
               </Tile>
             </Column>

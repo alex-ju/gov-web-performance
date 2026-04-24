@@ -161,6 +161,10 @@ function RankingTable({ rankings }: { rankings: CountryRanking[] }) {
                 <TableRow {...getRowProps({ row })} key={row.id}>
                   {row.cells.map((cell: any) => {
                     if (cell.info.header === 'rank') {
+                      if (cell.value === undefined) {
+                        return <TableCell key={cell.id}>N/A</TableCell>;
+                      }
+
                       return (
                         <TableCell key={cell.id}>
                           <strong>#{cell.value}</strong>
@@ -169,6 +173,10 @@ function RankingTable({ rankings }: { rankings: CountryRanking[] }) {
                     }
                     if (cell.info.header === 'score') {
                       const score = cell.value;
+                      if (score === 0) {
+                        return <TableCell key={cell.id}>N/A</TableCell>;
+                      }
+
                       let scoreClass = '';
                       if (score >= 90) scoreClass = 'score-excellent';
                       else if (score >= 75) scoreClass = 'score-good';
@@ -185,11 +193,12 @@ function RankingTable({ rankings }: { rankings: CountryRanking[] }) {
                       );
                     }
                     if (cell.info.header === 'change') {
-                      const change = row.cells.find((c: any) => c.info.header === 'change').value;
+                      const change = cell.value;
                       const previousRank = rankings.find(r => r.tld === row.id)?.previousRank;
+                      const score = rankings.find(r => r.tld === row.id)?.score;
 
-                      if (change === undefined || previousRank === undefined) {
-                        return <TableCell key={cell.id}>—</TableCell>;
+                      if (score === 0 || change === undefined || previousRank === undefined) {
+                        return <TableCell key={cell.id}>N/A</TableCell>;
                       }
 
                       if (change > 0) {
