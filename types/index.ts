@@ -82,6 +82,7 @@ export interface MetricRankings {
 export interface HistoricalDataPoint {
   month: string;
   value: number;
+  rank?: number;
 }
 
 // Country historical data

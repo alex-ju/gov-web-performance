@@ -124,57 +124,71 @@ export async function getLatestMonth(): Promise<string | null> {
   return manifest.reports[0].month;
 }
 
+type RankingMetric = 'performance' | 'accessibility' | 'bestPractices' | 'seo';
+
+function getMetricScore(report: CountryReport, metric: RankingMetric): number {
+  const score = report.metrics[metric];
+  return typeof score === 'number' ? score : 0;
+}
+
+/**
+ * Sort reports by score desc and assign dense ranks (1,1,2...).
+ */
+function buildRankMap(
+  reports: CountryReport[],
+  metric: RankingMetric
+): {
+  sorted: CountryReport[];
+  rankByTld: Map<string, number>;
+} {
+  const sorted = [...reports].sort((a, b) => {
+    const scoreDiff = getMetricScore(b, metric) - getMetricScore(a, metric);
+    if (scoreDiff !== 0) return scoreDiff;
+
+    // Keep tie ordering deterministic.
+    return a.country.localeCompare(b.country) || a.tld.localeCompare(b.tld);
+  });
+
+  const rankByTld = new Map<string, number>();
+  let previousScore: number | undefined;
+  let currentRank = 0;
+
+  sorted.forEach((report) => {
+    const score = getMetricScore(report, metric);
+    if (previousScore === undefined || score !== previousScore) {
+      currentRank += 1;
+      previousScore = score;
+    }
+    rankByTld.set(report.tld, currentRank);
+  });
+
+  return { sorted, rankByTld };
+}
+
 /**
  * Calculate rankings for a specific metric
  */
 export function calculateRankings(
   currentReport: MonthlyReport,
   previousReport: MonthlyReport | null,
-  metric: 'performance' | 'accessibility' | 'bestPractices' | 'seo'
+  metric: RankingMetric
 ): MetricRankings {
-  // Sort countries by metric score (descending)
-  const sorted = [...currentReport.reports].sort(
-    (a, b) => {
-      const scoreA = a.metrics[metric];
-      const scoreB = b.metrics[metric];
-      // Ensure we're comparing numbers
-      if (typeof scoreA === 'number' && typeof scoreB === 'number') {
-        return scoreB - scoreA;
-      }
-      return 0;
-    }
-  );
+  const { sorted, rankByTld } = buildRankMap(currentReport.reports, metric);
+  const previousRankByTld = previousReport
+    ? buildRankMap(previousReport.reports, metric).rankByTld
+    : null;
 
   // Create rankings with change indicators
-  const rankings = sorted.map((report, index) => {
-    const rank = index + 1;
-    const score = report.metrics[metric];
-    let previousRank: number | undefined;
-    let change: number | undefined;
-
-    if (previousReport) {
-      const prevReport = previousReport.reports.find(r => r.tld === report.tld);
-      if (prevReport) {
-        const prevSorted = [...previousReport.reports].sort(
-          (a, b) => {
-            const scoreA = a.metrics[metric];
-            const scoreB = b.metrics[metric];
-            if (typeof scoreA === 'number' && typeof scoreB === 'number') {
-              return scoreB - scoreA;
-            }
-            return 0;
-          }
-        );
-        previousRank = prevSorted.findIndex(r => r.tld === report.tld) + 1;
-        change = previousRank - rank; // positive = moved up
-      }
-    }
+  const rankings = sorted.map((report) => {
+    const rank = rankByTld.get(report.tld) ?? 0;
+    const previousRank = previousRankByTld?.get(report.tld);
+    const change = previousRank !== undefined ? previousRank - rank : undefined; // positive = moved up
 
     return {
       country: report.country,
       tld: report.tld,
       rank,
-      score: typeof score === 'number' ? score : 0,
+      score: getMetricScore(report, metric),
       previousRank,
       change,
     };
@@ -195,34 +209,55 @@ export function getCountryHistoricalData(
 ): CountryHistoricalData | null {
   const sortedReports = [...reports].sort((a, b) => a.month.localeCompare(b.month));
 
-  const countryReports = sortedReports
-    .map(report => report.reports.find(r => r.tld === tld))
-    .filter((r): r is NonNullable<typeof r> => r !== undefined);
+  const countryReportsByMonth = sortedReports
+    .map(report => ({
+      month: report.month,
+      countryReport: report.reports.find(r => r.tld === tld),
+      allReports: report.reports,
+    }))
+    .filter((entry): entry is {
+      month: string;
+      countryReport: CountryReport;
+      allReports: CountryReport[];
+    } => entry.countryReport !== undefined);
 
-  if (countryReports.length === 0) {
+  if (countryReportsByMonth.length === 0) {
     return null;
   }
 
-  const firstReport = countryReports[0];
+  const firstReport = countryReportsByMonth[0].countryReport;
+
+  const getDenseRankForMetric = (
+    monthReports: CountryReport[],
+    countryTld: string,
+    metric: RankingMetric
+  ): number | undefined => {
+    const { rankByTld } = buildRankMap(monthReports, metric);
+    return rankByTld.get(countryTld);
+  };
 
   return {
     country: firstReport.country,
     tld: firstReport.tld,
-    performance: countryReports.map((r, i) => ({
-      month: sortedReports[i].month,
-      value: r.metrics.performance,
+    performance: countryReportsByMonth.map(({ month, countryReport, allReports }) => ({
+      month,
+      value: countryReport.metrics.performance,
+      rank: getDenseRankForMetric(allReports, countryReport.tld, 'performance'),
     })),
-    accessibility: countryReports.map((r, i) => ({
-      month: sortedReports[i].month,
-      value: r.metrics.accessibility,
+    accessibility: countryReportsByMonth.map(({ month, countryReport, allReports }) => ({
+      month,
+      value: countryReport.metrics.accessibility,
+      rank: getDenseRankForMetric(allReports, countryReport.tld, 'accessibility'),
     })),
-    bestPractices: countryReports.map((r, i) => ({
-      month: sortedReports[i].month,
-      value: r.metrics.bestPractices,
+    bestPractices: countryReportsByMonth.map(({ month, countryReport, allReports }) => ({
+      month,
+      value: countryReport.metrics.bestPractices,
+      rank: getDenseRankForMetric(allReports, countryReport.tld, 'bestPractices'),
     })),
-    seo: countryReports.map((r, i) => ({
-      month: sortedReports[i].month,
-      value: r.metrics.seo,
+    seo: countryReportsByMonth.map(({ month, countryReport, allReports }) => ({
+      month,
+      value: countryReport.metrics.seo,
+      rank: getDenseRankForMetric(allReports, countryReport.tld, 'seo'),
     })),
   };
 }
