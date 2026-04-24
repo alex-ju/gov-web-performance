@@ -7,12 +7,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Disable TypeScript and ESLint build errors for faster development
+  // Disable TypeScript build errors if needed
   typescript: {
     ignoreBuildErrors: false,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 }
 
