@@ -1,0 +1,25 @@
+{
+  "country": "San Marino",
+  "tld": "sm",
+  "url": "http://www.sanmarino.sm",
+  "timestamp": "2026-05-01T02:54:29.086Z",
+  "metrics": {
+    "performance": 0,
+    "accessibility": 0,
+    "bestPractices": 0,
+    "seo": 0,
+    "audits": {
+      "performance": [],
+      "accessibility": [],
+      "bestPractices": [],
+      "seo": []
+    },
+    "timing": {
+      "firstContentfulPaint": null,
+      "largestContentfulPaint": null,
+      "totalBlockingTime": null,
+      "cumulativeLayoutShift": null,
+      "speedIndex": null
+    }
+  }
+}
