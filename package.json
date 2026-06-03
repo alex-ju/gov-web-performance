@@ -28,22 +28,22 @@
   },
   "homepage": "https://github.com/alex-ju/gov-web-performance#readme",
   "dependencies": {
-    "@carbon/charts": "^1.27.8",
-    "@carbon/charts-react": "^1.27.8",
-    "@carbon/react": "^1.106.0",
+    "@carbon/charts": "^1.27.11",
+    "@carbon/charts-react": "^1.27.11",
+    "@carbon/react": "^1.108.0",
     "d3": "^7.9.0",
-    "next": "^16.2.4",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "next": "^16.2.7",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
-    "@types/node": "^25.6.0",
-    "@types/react": "^19.2.14",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.16",
     "@types/react-dom": "^19.2.3",
     "chrome-launcher": "^1.1.2",
-    "lighthouse": "^13.2.0",
-    "sass": "^1.99.0",
+    "lighthouse": "^13.3.0",
+    "sass": "^1.100.0",
     "typescript": "^6.0.3"
   }
 }
