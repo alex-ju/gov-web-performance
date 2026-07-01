@@ -1,0 +1,25 @@
+{
+  "country": "Belgium",
+  "tld": "be",
+  "url": "https://www.belgium.be",
+  "timestamp": "2026-07-01T03:40:32.694Z",
+  "metrics": {
+    "performance": 0,
+    "accessibility": 0,
+    "bestPractices": 0,
+    "seo": 0,
+    "audits": {
+      "performance": [],
+      "accessibility": [],
+      "bestPractices": [],
+      "seo": []
+    },
+    "timing": {
+      "firstContentfulPaint": null,
+      "largestContentfulPaint": null,
+      "totalBlockingTime": null,
+      "cumulativeLayoutShift": null,
+      "speedIndex": null
+    }
+  }
+}
