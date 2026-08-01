@@ -1,6 +1,11 @@
 {
   "reports": [
     {
+      "month": "2026-08",
+      "filename": "2026-08-summary.json",
+      "generatedAt": "2026-08-01T03:02:08.510Z"
+    },
+    {
       "month": "2026-07",
       "filename": "2026-07-summary.json",
       "generatedAt": "2026-07-01T04:00:09.391Z"
